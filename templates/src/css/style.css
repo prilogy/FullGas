@@ -1,0 +1,321 @@
+@import url("https://rsms.me/inter/inter.css");
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html {
+  font-size: 28px;
+  background-color: #F7FDFD;
+}
+html * {
+  color: #0f3843;
+  font-family: "Inter", sans-serif;
+}
+
+.wrapper {
+  width: 1440px;
+  margin: auto;
+}
+
+header {
+  position: relative;
+  z-index: 9999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+}
+header a {
+  text-decoration: none;
+}
+header .metaBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #E3EBED;
+  height: 40px;
+  -webkit-box-shadow: inset 0 -0.4em 0.8em rgba(76, 109, 118, 0.18);
+          box-shadow: inset 0 -0.4em 0.8em rgba(76, 109, 118, 0.18);
+}
+header .metaBar .navBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 1440px;
+  margin: auto;
+}
+header .metaBar .navBar .navItem {
+  font-size: 0.5em;
+  font-weight: 600;
+  padding: 9px;
+}
+header .mainBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 74px;
+  -webkit-box-shadow: 0 0 1.7em rgba(76, 109, 118, 0.1);
+          box-shadow: 0 0 1.7em rgba(76, 109, 118, 0.1);
+}
+header .mainBar .wrapperBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 1440px;
+  margin: auto;
+}
+header .mainBar .wrapperBar figure {
+  padding: 0 9px;
+}
+header .mainBar .wrapperBar .menu {
+  font-size: 0.6em;
+  font-weight: 600;
+}
+header .mainBar .wrapperBar .menu a {
+  padding: 0 9px;
+}
+
+main {
+  max-width: 1440px;
+  margin: auto;
+}
+main .banner {
+  padding: 8em 0 4em;
+}
+main .banner h1 {
+  font-size: 2.6em;
+  font-weight: 800;
+  max-width: 1040px;
+}
+main .banner a.link-with-arrow {
+  display: block;
+  margin-top: 4em;
+  font-size: 0.62em;
+  text-decoration: none;
+  font-weight: 800;
+  color: #00cac9;
+}
+main .banner a.link-with-arrow svg {
+  display: block;
+  width: 72px;
+  height: 16px;
+  margin-bottom: 1rem;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+main .banner a.link-with-arrow path {
+  stroke: #00cac9;
+}
+main .catalog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 2em 0 4em;
+}
+main .catalog.about .block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 3em 0;
+}
+main .catalog.about .block img {
+  width: 44%;
+  border-radius: 16px;
+}
+main .catalog.about .block h3 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+main .catalog.about .blockDesc {
+  margin-left: 6%;
+}
+main .catalog.about .block:nth-child(2n + 1) {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+main .catalog.about .block:nth-child(2n + 1) .blockDesc {
+  margin-left: 0;
+  margin-right: 6%;
+}
+main .catalog.about .block:nth-child(2) {
+  padding-top: 0;
+}
+main .catalog h2 {
+  font-size: 1.7em;
+  font-weight: 800;
+  max-width: 1040px;
+  margin-bottom: 1em;
+}
+main .catalogItems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+main .catalogItems .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 26%;
+  height: 26vw;
+}
+main .catalogItems .item figure img {
+  width: 100%;
+  border-radius: 8px;
+}
+main .catalogItems .item h1 {
+  font-size: 1.4em;
+  font-weight: 600;
+  padding: 0.3em 0 0.6em 0;
+}
+main .catalogItems .item p {
+  font-size: 0.8em;
+}
+main .catalogItems .item a {
+  margin-top: 1.6em;
+  font-size: 0.6em;
+  display: inline-block;
+  text-decoration: none;
+  color: #00cac9;
+}
+
+@media (min-width: 576px) {
+  .pageContent .bg1, .pageContent .bg2, .pageContent .bg3 {
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .pageContent .bg1:after, .pageContent .bg1:before {
+    content: "";
+    position: absolute;
+    top: 114px;
+    bottom: 0;
+    width: 1px;
+    background: rgba(227, 235, 237, 0.56);
+  }
+  .pageContent .bg2:after, .pageContent .bg2:before {
+    content: "";
+    position: absolute;
+    top: 114px;
+    bottom: 0;
+    width: 1px;
+    background: rgba(227, 235, 237, 0.56);
+  }
+  .pageContent .bg3:after, .pageContent .bg3:before {
+    content: "";
+    position: absolute;
+    top: 114px;
+    bottom: 0;
+    width: 1px;
+    background: rgba(227, 235, 237, 0.56);
+  }
+  .pageContent .bg1:before {
+    left: 28%;
+  }
+  .pageContent .bg1:after {
+    left: 72%;
+  }
+  .pageContent .bg2:before {
+    left: 39%;
+  }
+  .pageContent .bg2:after {
+    left: 61%;
+  }
+  .pageContent .bg3:before {
+    left: 50%;
+  }
+}

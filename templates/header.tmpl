@@ -1,0 +1,37 @@
+{{define "header"}}
+    <!doctype html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>BitterBit</title>
+        {{range $key, $value := .Links }}
+            <link rel="{{$value.Rel}}" href="{{$value.Href}}">
+        {{end}}
+
+    </head>
+    <body>
+    <header>
+        <div class="metaBar">
+            <div class="navBar">
+                {{range $key, $value := .TopBar }}
+                    <a class="navItem" href="{{ $value.Link }}">{{ $value.Name }}</a>
+                {{end}}
+            </div>
+        </div>
+        <div class="mainBar">
+            <div class="wrapperBar">
+                <figure>
+                    <img src="{{.LogoData.Img}}" alt="{{.LogoData.Alt}}">
+                </figure>
+                <div class="menu">
+                    {{range $key, $value := .NavBar }}
+                        <a href="{{ $value.Link }}">{{ $value.Name }}</a>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+    </header>
+{{end}}
