@@ -1,0 +1,66 @@
+{{define "tires"}}
+    {{template "header" .Header}}
+    <section id="TiresBanner" class="shadow"></section>
+    <div class="wrapper">
+        <div class="ProductImage">
+            <figure style="background-image: url('/static/img/TiresImg.jpg')"></figure>
+        </div>
+        <section class="ProductFilter">
+            <h1>Шипованная резина MITAS</h1>
+            <div class="PriceRange">
+                <h3>от 9 500</h3>
+                <h3>до 28 800</h3>
+            </div>
+            <div class="ProductFilterBlock">
+                <h3>Выберите кубатуру.</h3>
+                <div class="blocks" id="CubBlocks">
+                    <div class="row">
+                        {{range $key, $value := .TiresInside.Cub }}
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-6">
+                                <div class="block" id="Cub_{{ $value }}" onclick="selectCub({{ $value }});">
+                                    <h4>{{ $value }} СС</h4>
+                                    <p>R24</p>
+                                </div>
+                            </div>
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+            <div class="ProductFilterBlock">
+                <h3>Выберите тип.</h3>
+                <div class="blocks" id="TypeBlocks">
+                    <div class="row">
+                        {{range $key, $value := .TiresInside.Type }}
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-6">
+                                <a href="#RadiusBlocks" class="block" id="Type_{{ $value.Id }}" onclick="selectType({{ $value.Id }});">
+                                    <h4>{{ $value.Name }}</h4>
+                                    <p>Резин</p>
+                                </a>
+                            </div>
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="ProductFilterBlock">
+                <a name="radius"></a>
+                <h3>Выберите радиус.</h3>
+                {{ block "radius" .}}
+                    <div class="blocks" id="RadiusBlocks">
+                        <div id="RadiusBlocksFront">
+                            <p style="font-size: .6em; padding: 10px 0;">
+                                Сначала выберите тип и кубатуру
+                            </p>
+                        </div>
+                        <div id="RadiusBlocksBack">
+                        </div>
+                    </div>
+                {{ end }}
+            </div>
+            <div class="ProductFilterBlock" id="ProductPrice">
+
+            </div>
+        </section>
+    </div>
+    {{template "footer" }}
+{{end}}

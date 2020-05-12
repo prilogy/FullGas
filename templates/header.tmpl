@@ -10,7 +10,6 @@
         {{range $key, $value := .Links }}
             <link rel="{{$value.Rel}}" href="{{$value.Href}}">
         {{end}}
-
     </head>
     <body>
     <header>
@@ -24,8 +23,20 @@
         <div class="mainBar">
             <div class="wrapperBar">
                 <figure>
-                    <img src="{{.LogoData.Img}}" alt="{{.LogoData.Alt}}">
+                    <h1>Full Gas moto</h1>
                 </figure>
+                <div class="hamburger-menu">
+                    <input id="menu__toggle" type="checkbox" />
+                    <label class="menu__btn" for="menu__toggle">
+                        <span></span>
+                    </label>
+
+                    <ul class="menu__box">
+                        {{range $key, $value := .NavBar }}
+                            <li><a class="menu__item" href="{{ $value.Link }}">{{ $value.Name }}</a></li>
+                        {{end}}
+                    </ul>
+                </div>
                 <div class="menu">
                     {{range $key, $value := .NavBar }}
                         <a href="{{ $value.Link }}">{{ $value.Name }}</a>

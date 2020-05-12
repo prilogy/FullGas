@@ -1,8 +1,8 @@
 package http
 
 import (
-	er "golex/helpers/errCatch"
-	"golex/models"
+	er "FullGas/helpers/errCatch"
+	"FullGas/models"
 	"html/template"
 	"net/http"
 )

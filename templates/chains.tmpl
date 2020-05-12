@@ -1,0 +1,67 @@
+{{define "chains"}}
+    {{template "header" .Header}}
+    {{$pads := .Chains}}
+    {{$marks := .UsageList}}
+    {{$pages := .Page.End}}
+    {{$pageMark := .PageMark}}
+    {{$pageCurrent := .Page.Current}}
+    <section id="ChainsBanner" class="shadow"></section>
+    <div class="wrapper" style="padding: 0; max-width: 1700px">
+        <div class="container-fluid">
+            <div class="ProductSingleFilter">
+                <a href="#" id="marks"></a>
+                <h2>Выберите марку:</h2>
+                <div class="Filter">
+                    {{range $key, $value := $marks}}
+                        <a href='?mark={{ $value.Id }}#marks' class="FilterBlock" onclick="ListUpdate({{ $value.Id }})">
+                            <h3>{{ $value.Name }}</h3>
+                        </a>
+                    {{end}}
+                </div>
+            </div>
+            <div class="row">
+                {{range $key, $value := $pads }}
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                        <div class="ProductSingle chains">
+                            <figure
+                                    class="shadow"
+                                    style="
+                                            background-position: center;
+                                            background-size: cover;
+                                            background-image: url('/static/img/{{ $value.Model }}.jpg');
+                                            ">
+                            </figure>
+                            <h2>{{ $value.MarkName }} {{ $value.Model }}</h2>
+                            <p>{{$value.Description}}</p>
+                            <div class="ActionBlock">
+                                <div class="Price"> {{ $value.Price }} руб.<span> / шт.</span></div>
+                                <button id="Pad_{{ $value.Id }}" class="Button" onclick="">Купить</button>
+                            </div>
+                        </div>
+                    </div>
+                {{end}}
+            </div>
+            <div class="Pagination">
+                {{if ne .PageMark ""}}
+                    {{ range $k, $val := Iter $pages }}
+                        {{if eq $val $pageCurrent}}
+                            <a href="?mark={{ $pageMark }}&page={{ $val }}#marks" class="active">{{ $val }}</a>
+                        {{else}}
+                            <a href="?mark={{ $pageMark }}&page={{ $val }}#marks">{{ $val }}</a>
+                        {{end}}
+                    {{end}}
+                {{else}}
+                    {{ range $k, $val := Iter $pages }}
+                        {{if eq $val $pageCurrent}}
+                            <a href="?page={{ $val }}#marks" class="active">{{ $val }}</a>
+                        {{else}}
+                            <a href="?page={{ $val }}#marks">{{ $val }}</a>
+                        {{end}}
+                    {{end}}
+                {{end}}
+            </div>
+        </div>
+    </div>
+
+    {{template "footer" }}
+{{end}}

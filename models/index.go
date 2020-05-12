@@ -1,27 +1,15 @@
 package models
 
 import (
-	s "golex/models/static"
+	s "FullGas/models/static"
 )
 
-type ViewData struct{
+type IndexData struct{
 	Header		s.HeaderData
 }
 
-type ProductData struct {
-	Name	string
-	Header	string
-	Blocks	[]Block
-}
-
-type Block struct {
-	Img		string
-	Name 	string
-	Desc	string
-}
-
-func Index() ViewData{
-	data := ViewData{
+func Index() IndexData{
+	data := IndexData{
 		Header: s.Header(),
 	}
 

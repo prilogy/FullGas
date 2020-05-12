@@ -43,15 +43,70 @@ table {
 html {
   font-size: 28px;
   background-color: #F7FDFD;
+  overflow-x: hidden;
 }
 html * {
-  color: #0f3843;
+  color: #0F3243;
   font-family: "Inter", sans-serif;
+}
+html h1 {
+  font-size: 1.62em;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+}
+html h2 {
+  font-size: 1em;
+}
+html h3 {
+  font-size: 0.75em;
+}
+html p {
+  font-size: 0.55em;
+  color: #0F3243;
+  opacity: 0.87;
+}
+html .shadow {
+  -webkit-box-shadow: inset -5px -2px 10px rgba(15, 50, 67, 0.08), inset 2px 5px 10px rgba(238, 245, 251, 0.4), -2px -2px 6px rgba(238, 245, 251, 0.44), 2px 2px 6px rgba(15, 50, 67, 0.26);
+          box-shadow: inset -5px -2px 10px rgba(15, 50, 67, 0.08), inset 2px 5px 10px rgba(238, 245, 251, 0.4), -2px -2px 6px rgba(238, 245, 251, 0.44), 2px 2px 6px rgba(15, 50, 67, 0.26);
+}
+html #StarsBanner, html #TiresBanner, html #PadsBanner, html #ChainsBanner, html #MainBanner {
+  width: 100vw;
+  height: 34vw;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 1em;
+}
+html #MainBanner {
+  background-color: #F7FDFD;
+}
+html #PadsBanner {
+  background-image: url("/static/img/PadsDesktop.jpg");
+  background-position: bottom;
+}
+html #TiresBanner {
+  background-image: url("/static/img/TiresDesktop.jpg");
+  background-position: bottom;
+}
+html #ChainsBanner {
+  background-image: url("/static/img/ChainsDesktop.jpg");
+  background-position: bottom;
 }
 
 .wrapper {
-  width: 1440px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100vw;
+  max-width: 1440px;
+  min-height: 120vh;
   margin: auto;
+  padding: 1em 8px;
 }
 
 header {
@@ -80,10 +135,10 @@ header .metaBar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #E3EBED;
+  background-color: #E3E8ED;
   height: 40px;
-  -webkit-box-shadow: inset 0 -0.4em 0.8em rgba(76, 109, 118, 0.18);
-          box-shadow: inset 0 -0.4em 0.8em rgba(76, 109, 118, 0.18);
+  -webkit-box-shadow: inset 0 -0.4em 0.8em rgba(76, 104, 118, 0.18);
+          box-shadow: inset 0 -0.4em 0.8em rgba(76, 104, 118, 0.18);
 }
 header .metaBar .navBar {
   display: -webkit-box;
@@ -112,8 +167,8 @@ header .mainBar {
       -ms-flex-align: center;
           align-items: center;
   height: 74px;
-  -webkit-box-shadow: 0 0 1.7em rgba(76, 109, 118, 0.1);
-          box-shadow: 0 0 1.7em rgba(76, 109, 118, 0.1);
+  -webkit-box-shadow: 0 0 1.7em rgba(76, 104, 118, 0.1);
+          box-shadow: 0 0 1.7em rgba(76, 104, 118, 0.1);
 }
 header .mainBar .wrapperBar {
   display: -webkit-box;
@@ -134,6 +189,14 @@ header .mainBar .wrapperBar {
 }
 header .mainBar .wrapperBar figure {
   padding: 0 9px;
+}
+header .mainBar .wrapperBar figure h1 {
+  font-size: 1em;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 800;
+}
+header .mainBar .wrapperBar .hamburger-menu {
+  display: none;
 }
 header .mainBar .wrapperBar .menu {
   font-size: 0.6em;
@@ -161,7 +224,7 @@ main .banner a.link-with-arrow {
   font-size: 0.62em;
   text-decoration: none;
   font-weight: 800;
-  color: #00cac9;
+  color: #1480B6;
 }
 main .banner a.link-with-arrow svg {
   display: block;
@@ -172,9 +235,21 @@ main .banner a.link-with-arrow svg {
   transition: width 0.5s;
 }
 main .banner a.link-with-arrow path {
-  stroke: #00cac9;
+  stroke: #1480B6;
 }
-main .catalog {
+
+.ProductImage figure {
+  width: 404px;
+  height: 653.672px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 40px;
+  -webkit-box-shadow: inset -5px -2px 10px rgba(15, 50, 67, 0.08), inset 2px 5px 10px rgba(238, 245, 251, 0.4), -2px -2px 4px rgba(238, 245, 251, 0.44), 2px 2px 4px rgba(15, 50, 67, 0.26);
+          box-shadow: inset -5px -2px 10px rgba(15, 50, 67, 0.08), inset 2px 5px 10px rgba(238, 245, 251, 0.4), -2px -2px 4px rgba(238, 245, 251, 0.44), 2px 2px 4px rgba(15, 50, 67, 0.26);
+}
+
+.ProductFilter {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -182,9 +257,53 @@ main .catalog {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 2em 0 4em;
+  max-width: 740px;
+  padding-top: 1em;
 }
-main .catalog.about .block {
+.ProductFilter .PriceRange {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 8px;
+}
+.ProductFilter .PriceRange h3 {
+  color: #0F3243;
+  opacity: 80%;
+}
+.ProductFilter .ProductFilterBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 740px;
+  margin-top: 1em;
+}
+.ProductFilter .ProductFilterBlock h3 {
+  font-weight: 600;
+}
+.ProductFilter .ProductFilterBlock#ProductPrice .price h4 {
+  font-size: 40px;
+  font-weight: 600;
+}
+.ProductFilter .ProductFilterBlock#ProductPrice .price button {
+  margin-top: 17px;
+  background-color: #0F3243;
+  border: none;
+  width: 320px;
+  padding: 17px 0;
+  font-size: 26px;
+  color: #fff;
+  border-radius: 8px;
+  -webkit-box-shadow: inset -5px -2px 10px rgba(15, 50, 67, 0.08), inset 2px 5px 10px rgba(238, 245, 251, 0.4), -2px -2px 4px rgba(238, 245, 251, 0.44), 2px 2px 4px rgba(15, 50, 67, 0.26);
+          box-shadow: inset -5px -2px 10px rgba(15, 50, 67, 0.08), inset 2px 5px 10px rgba(238, 245, 251, 0.4), -2px -2px 4px rgba(238, 245, 251, 0.44), 2px 2px 4px rgba(15, 50, 67, 0.26);
+}
+.ProductFilter .ProductFilterBlock .blocks {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -192,40 +311,99 @@ main .catalog.about .block {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  padding: 3em 0;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
-main .catalog.about .block img {
-  width: 44%;
-  border-radius: 16px;
+.ProductFilter .ProductFilterBlock .blocks .row {
+  width: 100%;
 }
-main .catalog.about .block h3 {
-  font-size: 1.4em;
-  font-weight: 600;
-  margin-bottom: 1em;
-}
-main .catalog.about .blockDesc {
-  margin-left: 6%;
-}
-main .catalog.about .block:nth-child(2n + 1) {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-}
-main .catalog.about .block:nth-child(2n + 1) .blockDesc {
+.ProductFilter .ProductFilterBlock .blocks .block {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 160px;
+  max-width: 100%;
+  height: 98px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin-left: 0;
-  margin-right: 6%;
+  margin-top: 17px;
+  padding-left: 17px;
+  background-color: #F7FDFD;
+  -webkit-box-shadow: inset -5px -2px 10px rgba(15, 50, 67, 0.08), inset 2px 5px 10px rgba(238, 245, 251, 0.4), -2px -2px 6px rgba(238, 245, 251, 0.44), 2px 2px 6px rgba(15, 50, 67, 0.26);
+          box-shadow: inset -5px -2px 10px rgba(15, 50, 67, 0.08), inset 2px 5px 10px rgba(238, 245, 251, 0.4), -2px -2px 6px rgba(238, 245, 251, 0.44), 2px 2px 6px rgba(15, 50, 67, 0.26);
+  border-radius: 17px;
 }
-main .catalog.about .block:nth-child(2) {
-  padding-top: 0;
+.ProductFilter .ProductFilterBlock .blocks .block h4 {
+  font-size: 0.75em;
+  font-weight: 600;
 }
-main .catalog h2 {
-  font-size: 1.7em;
-  font-weight: 800;
-  max-width: 1040px;
-  margin-bottom: 1em;
+.ProductFilter .ProductFilterBlock .blocks .block:not(:nth-child(4n+1)) {
+  margin-left: 17px;
 }
-main .catalogItems {
+.ProductFilter .ProductFilterBlock .blocks .block.active {
+  border: 2px solid #1480B6;
+  -webkit-box-shadow: inset 5px 2px 8px rgba(20, 128, 182, 0.35), inset -2px -5px 8px rgba(238, 245, 251, 0.8);
+          box-shadow: inset 5px 2px 8px rgba(20, 128, 182, 0.35), inset -2px -5px 8px rgba(238, 245, 251, 0.8);
+}
+.ProductFilter .ProductFilterBlock .blocks #RadiusBlocksFront, .ProductFilter .ProductFilterBlock .blocks #RadiusBlocksBack {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 50%;
+}
+.ProductFilter .ProductFilterBlock .blocks #RadiusBlocksFront .block:not(:nth-child(4n+1)), .ProductFilter .ProductFilterBlock .blocks #RadiusBlocksBack .block:not(:nth-child(4n+1)) {
+  margin-left: 0;
+}
+.ProductFilter .ProductFilterBlock .blocks #RadiusBlocksFront .block:not(:nth-child(2n+1)), .ProductFilter .ProductFilterBlock .blocks #RadiusBlocksBack .block:not(:nth-child(2n+1)) {
+  margin-left: 17px;
+}
+.ProductFilter .ProductFilterBlock .blocks #RadiusBlocksFront.full_radius, .ProductFilter .ProductFilterBlock .blocks #RadiusBlocksBack.full_radius {
+  width: 100%;
+}
+.ProductFilter .ProductFilterBlock .blocks #RadiusBlocksFront.full_radius .block:not(:nth-child(4n+1)), .ProductFilter .ProductFilterBlock .blocks #RadiusBlocksBack.full_radius .block:not(:nth-child(4n+1)) {
+  margin-left: 17px;
+}
+
+.ProductSingle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 17em;
+  max-width: 15em;
+  padding: 0.62em;
+}
+.ProductSingle figure {
+  width: 100%;
+  height: 9em;
+  border-radius: 4px;
+}
+.ProductSingle h2 {
+  padding: 16px 0 8px 0;
+  font-weight: 400;
+}
+.ProductSingle p {
+  height: 3em;
+}
+.ProductSingle .ActionBlock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -236,10 +414,30 @@ main .catalogItems {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 16px 0 8px 0;
 }
-main .catalogItems .item {
+.ProductSingle .ActionBlock .Price {
+  font-size: 0.9em;
+  font-weight: 600;
+}
+.ProductSingle .ActionBlock .Price span {
+  font-size: 0.7em;
+  font-weight: 400;
+}
+.ProductSingle .ActionBlock .Button {
+  width: 40%;
+  background-color: #0F3243;
+  color: #EEF5FB;
+  font-size: 0.8em;
+  line-height: 2em;
+  font-weight: 500;
+  border: 0;
+  border-radius: 3px 3px 10px 3px;
+}
+.ProductSingleFilter {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -247,75 +445,301 @@ main .catalogItems .item {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 26%;
-  height: 26vw;
+  padding: 0.62em 0.62em 0;
+  margin: 0.4em 0 0.8em;
 }
-main .catalogItems .item figure img {
-  width: 100%;
-  border-radius: 8px;
+.ProductSingleFilter .Filter {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
-main .catalogItems .item h1 {
-  font-size: 1.4em;
-  font-weight: 600;
-  padding: 0.3em 0 0.6em 0;
-}
-main .catalogItems .item p {
-  font-size: 0.8em;
-}
-main .catalogItems .item a {
-  margin-top: 1.6em;
-  font-size: 0.6em;
-  display: inline-block;
+.ProductSingleFilter .FilterBlock {
   text-decoration: none;
-  color: #00cac9;
+  margin: 0.4em 0.16em 0;
+  display: inline-block;
+  background-color: #EEF5FB;
+  padding: 0.2em 0.4em;
+  border-radius: 3px 3px 10px 3px;
+  border: 1px solid #1480B6;
 }
 
-@media (min-width: 576px) {
-  .pageContent .bg1, .pageContent .bg2, .pageContent .bg3 {
-    position: fixed;
-    z-index: 0;
+.Pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
+  width: 300px;
+}
+.Pagination a {
+  display: inline-block;
+  width: 1.4em;
+  line-height: 1.4em;
+  border: 1px solid #0F3243;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  margin: 0 0.2em 0.8em;
+}
+.Pagination a.active {
+  background-color: #0F3243;
+  color: #EEF5FB;
+}
+
+@media only screen and (max-width: 1440px) {
+  html {
+    font-size: 26px;
+  }
+
+  .ProductSingle {
+    height: 16em;
+  }
+  .ProductSingle figure {
+    height: 8.2em;
+  }
+  .ProductSingle .ActionBlock .Price span {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 26px;
+  }
+  html #StarsBanner, html #TiresBanner, html #PadsBanner, html #ChainsBanner, html #MainBanner {
+    height: 40vw;
+  }
+
+  .ProductSingle {
+    height: 18em;
+  }
+  .ProductSingle figure {
+    height: 11em;
+  }
+  .ProductSingle .ActionBlock .Price span {
+    display: inline-block;
+  }
+
+  .wrapper .ProductImage figure {
+    display: none;
+  }
+  .wrapper .ProductFilter {
+    margin: 20px auto;
+    width: 85vw;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .wrapper .ProductImage figure {
+    display: none;
+  }
+  .wrapper .ProductFilter {
+    margin: 20px auto;
+    width: 90vw;
+  }
+}
+@media only screen and (max-width: 768px) {
+  header .mainBar figure {
+    width: 2em;
+    height: 2em;
+    background-image: url("/static/svg/logo.svg");
+    background-size: cover;
+    margin-left: 0.4em;
+  }
+  header .mainBar figure h1 {
+    display: none;
+  }
+
+  html {
+    font-size: 24px;
+  }
+
+  .ProductSingle {
+    height: 60vw;
+  }
+  .ProductSingle figure {
+    height: 35vw;
+  }
+  .ProductSingle p {
+    font-size: 0.6em;
+  }
+  .ProductSingle .ActionBlock .Price span {
+    display: none;
+  }
+
+  .wrapper .ProductImage figure {
+    display: none;
+  }
+  .wrapper .ProductFilter {
+    margin: 20px auto;
+    width: 90vw;
+  }
+}
+@media only screen and (max-width: 576px) {
+  header .mainBar .wrapperBar {
+    position: relative;
+  }
+  header .mainBar .wrapperBar .hamburger-menu {
+    display: block;
+  }
+  header .mainBar .wrapperBar .hamburger-menu #menu__toggle {
+    opacity: 0;
+  }
+  header .mainBar .wrapperBar .hamburger-menu #menu__toggle:checked ~ .menu__btn > span {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  header .mainBar .wrapperBar .hamburger-menu #menu__toggle:checked ~ .menu__btn > span::before {
     top: 0;
-    right: 0;
-    bottom: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  header .mainBar .wrapperBar .hamburger-menu #menu__toggle:checked ~ .menu__btn > span::after {
+    top: 0;
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  header .mainBar .wrapperBar .hamburger-menu #menu__toggle:checked ~ .menu__box {
+    visibility: visible;
     left: 0;
   }
-  .pageContent .bg1:after, .pageContent .bg1:before {
-    content: "";
+  header .mainBar .wrapperBar .hamburger-menu .menu__btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: fixed;
+    top: 2.6em;
+    right: 0.5em;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+  }
+  header .mainBar .wrapperBar .hamburger-menu .menu__btn > span {
+    display: block;
     position: absolute;
-    top: 114px;
-    bottom: 0;
-    width: 1px;
-    background: rgba(227, 235, 237, 0.56);
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
   }
-  .pageContent .bg2:after, .pageContent .bg2:before {
-    content: "";
+  header .mainBar .wrapperBar .hamburger-menu .menu__btn > span::before {
+    display: block;
     position: absolute;
-    top: 114px;
-    bottom: 0;
-    width: 1px;
-    background: rgba(227, 235, 237, 0.56);
-  }
-  .pageContent .bg3:after, .pageContent .bg3:before {
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
     content: "";
+    top: -8px;
+  }
+  header .mainBar .wrapperBar .hamburger-menu .menu__btn > span::after {
+    display: block;
     position: absolute;
-    top: 114px;
-    bottom: 0;
-    width: 1px;
-    background: rgba(227, 235, 237, 0.56);
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+    content: "";
+    top: 8px;
   }
-  .pageContent .bg1:before {
-    left: 28%;
+  header .mainBar .wrapperBar .hamburger-menu .menu__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #ECEFF1;
+    -webkit-box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+            box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+    -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
   }
-  .pageContent .bg1:after {
-    left: 72%;
+  header .mainBar .wrapperBar .hamburger-menu .menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
   }
-  .pageContent .bg2:before {
-    left: 39%;
+  header .mainBar .wrapperBar .hamburger-menu .menu__item:hover {
+    background-color: #CFD8DC;
   }
-  .pageContent .bg2:after {
-    left: 61%;
+  header .mainBar .wrapperBar .menu {
+    display: none;
   }
-  .pageContent .bg3:before {
-    left: 50%;
+
+  html {
+    font-size: 24px;
+  }
+  html #PadsBanner, html #ChainsBanner, html #TiresBanner, html #MainBanner {
+    width: 100%;
+    height: 133vw;
+  }
+  html #ChainsBanner {
+    background-image: url("/static/img/ChainsMobile.jpg");
+  }
+  html #PadsBanner {
+    background-image: url("/static/img/PadsMobile.jpg");
+  }
+  html #TiresBanner {
+    background-image: url("/static/img/TiresMobile.jpg");
+  }
+  html h3 {
+    font-size: 16px;
+  }
+  html .wrapper .ProductFilter {
+    width: 96vw;
+    margin: 0 auto;
+  }
+
+  .ProductSingle {
+    height: 20em;
+    margin: 0 !important;
+  }
+  .ProductSingle figure {
+    height: 11.6em;
+  }
+  .ProductSingle p {
+    height: auto;
+    font-size: 0.6em;
+  }
+  .ProductSingle.chains {
+    height: 16em;
+  }
+  .ProductSingle.chains figure {
+    height: 8em;
+  }
+  .ProductSingle.chains p {
+    height: auto;
+    font-size: 0.6em;
+  }
+  .ProductSingle .ActionBlock .Price span {
+    display: none;
   }
 }
