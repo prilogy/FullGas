@@ -1,7 +1,7 @@
 package http
 
 import (
-	er "FullGas/helpers/errCatch"
+	er "../helpers/errCatch"
 	"context"
 	"encoding/json"
 	"fmt"

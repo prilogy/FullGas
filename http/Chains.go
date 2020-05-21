@@ -1,8 +1,8 @@
 package http
 
 import (
-	er "FullGas/helpers/errCatch"
-	"FullGas/models"
+	er "../helpers/errCatch"
+	"../models"
 	"context"
 	"github.com/jackc/pgx"
 	"html/template"

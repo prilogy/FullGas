@@ -1,7 +1,7 @@
 package models
 
 import (
-	s "FullGas/models/static"
+	s "../models/static"
 )
 
 type ChainsData struct{

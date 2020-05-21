@@ -1,8 +1,8 @@
 package main
 
 import (
-	"FullGas/helpers/env"
-	h "FullGas/http"
+	"./helpers/env"
+	h "./http"
 	"github.com/gorilla/mux"
 	"net/http"
 )

@@ -1,11 +1,13 @@
 package env
 
 import (
-	er "golex/helpers/errCatch"
+	"log"
 	"os"
 )
 
 func SetEnv() {
 	err := os.Setenv("DATABASE_URL", "postgres://postgres:12345@localhost/fgmotoru")
-	er.ErrDefaultDetect(err, "Ошибка установки ENV")
+	if err != nil {
+		log.Fatal("ListenAndServe Ошибка установки ENV : ", err)
+	}
 }
