@@ -1,4 +1,4 @@
-package errCatch
+package helpers
 
 import (
 	"fmt"

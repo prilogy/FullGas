@@ -1,8 +1,7 @@
 package http
 
 import (
-	er "../helpers/errCatch"
-	f "../helpers/function"
+	help "../helpers"
 	"../models"
 	"context"
 	"github.com/jackc/pgx"
@@ -16,12 +15,12 @@ func Tires(w http.ResponseWriter, r *http.Request)  {
 
 	//Догрузка из БД
 	conn, err := pgx.Connect(context.Background(), os.Getenv("DATABASE_URL"))
-	er.ErrDefaultDetect(err, "DataBase Connection")
+	help.ErrDefaultDetect(err, "DataBase Connection")
 	defer conn.Close(context.Background())
 
 	rows, err := conn.Query(context.Background(), "select cub from _tires")
 	defer rows.Close()
-	er.ErrDefaultDetect(err, "QueryRow")
+	help.ErrDefaultDetect(err, "QueryRow")
 
 	iData := make([]int, 0, 5)
 	var temp int
@@ -29,10 +28,10 @@ func Tires(w http.ResponseWriter, r *http.Request)  {
 	for rows.Next(){
 		err = rows.Scan(&temp)
 		iData = append(iData, temp)
-		er.ErrDefaultDetect(err, "Row Scan")
+		help.ErrDefaultDetect(err, "Row Scan")
 	}
 
-	data.TiresInside.Cub = append(data.TiresInside.Cub, f.Unique(iData)...)
+	data.TiresInside.Cub = append(data.TiresInside.Cub, help.Unique(iData)...)
 
 	templates, err := template.ParseFiles(
 		"templates/header.tmpl",
@@ -42,5 +41,5 @@ func Tires(w http.ResponseWriter, r *http.Request)  {
 	tmpl := templates.Lookup("tires.tmpl")
 	err = tmpl.ExecuteTemplate(w, "tires", data)
 
-	er.ErrCatch(err, "Перевод в шаблон")
+	help.ErrCatch(err, "Перевод в шаблон")
 }

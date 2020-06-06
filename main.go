@@ -1,14 +1,18 @@
 package main
 
 import (
-	"./helpers/env"
 	h "./http"
 	"github.com/gorilla/mux"
+	"log"
 	"net/http"
+	"os"
 )
 
 func main(){
-	env.SetEnv()
+	err := os.Setenv("DATABASE_URL", "postgres://postgres:12345@localhost/fgmotoru")
+	if err != nil {
+		log.Fatal("ListenAndServe Ошибка установки ENV : ", err)
+	}
 	r := mux.NewRouter()
 
 	r.HandleFunc("/", h.Index)
@@ -29,5 +33,5 @@ func main(){
 		http.FileServer(http.Dir("templates/static"))))
 
 	http.Handle("/", r)
-	http.ListenAndServe(":8181", nil)
+	http.ListenAndServe(":8080", nil)
 }

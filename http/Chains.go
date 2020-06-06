@@ -1,7 +1,7 @@
 package http
 
 import (
-	er "../helpers/errCatch"
+	"../helpers"
 	"../models"
 	"context"
 	"github.com/jackc/pgx"
@@ -27,7 +27,7 @@ func Chains(w http.ResponseWriter, r *http.Request)  {
 
 	//Догрузка из БД
 	conn, err := pgx.Connect(context.Background(), os.Getenv("DATABASE_URL"))
-	er.ErrDefaultDetect(err, "DataBase Connection")
+	helpers.ErrDefaultDetect(err, "DataBase Connection")
 	//Количество страниц
 	var pages int
 
@@ -48,7 +48,7 @@ func Chains(w http.ResponseWriter, r *http.Request)  {
 			"select * from _chains WHERE usable=$1 LIMIT 20 OFFSET $2", marksQ, 20*(key-1))
 	}
 
-	er.ErrDefaultDetect(err, "QueryRow")
+	helpers.ErrDefaultDetect(err, "QueryRow")
 
 	iData := []models.ChainsProduct{}
 
@@ -63,7 +63,7 @@ func Chains(w http.ResponseWriter, r *http.Request)  {
 		}, model)
 		data.MarkName = marks[data.Mark]
 		iData = append(iData, data)
-		er.ErrDefaultDetect(err, "Row Scan")
+		helpers.ErrDefaultDetect(err, "Row Scan")
 	}
 	defer rows.Close()
 
@@ -106,5 +106,5 @@ func Chains(w http.ResponseWriter, r *http.Request)  {
 
 	err = tmpl.ExecuteTemplate(w, "chains", output)
 
-	er.ErrCatch(err, "Перевод в шаблон")
+	helpers.ErrCatch(err, "Перевод в шаблон")
 }

@@ -1,4 +1,4 @@
-package function
+package helpers
 
 func Unique(intSlice []int) []int {
 	keys := make(map[int]bool)

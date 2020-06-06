@@ -1,7 +1,7 @@
 package http
 
 import (
-	er "../helpers/errCatch"
+	"../helpers"
 	"../models"
 	"html/template"
 	"net/http"
@@ -18,5 +18,5 @@ func Index(w http.ResponseWriter, r *http.Request)  {
 	tmpl := templates.Lookup("index.tmpl")
 	err = tmpl.ExecuteTemplate(w, "index", data)
 
-	er.ErrCatch(err, "Перевод в шаблон")
+	helpers.ErrCatch(err, "Перевод в шаблон")
 }

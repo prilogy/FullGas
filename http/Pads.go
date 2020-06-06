@@ -1,7 +1,7 @@
 package http
 
 import (
-	er "../helpers/errCatch"
+	"../helpers"
 	"../models"
 	"context"
 	"github.com/jackc/pgx"
@@ -25,7 +25,7 @@ func Pads(w http.ResponseWriter, r *http.Request)  {
 
 	//Догрузка из БД
 	conn, err := pgx.Connect(context.Background(), os.Getenv("DATABASE_URL"))
-	er.ErrDefaultDetect(err, "DataBase Connection")
+	helpers.ErrDefaultDetect(err, "DataBase Connection")
 	//Количество страниц
 	var pages int
 
@@ -47,7 +47,7 @@ func Pads(w http.ResponseWriter, r *http.Request)  {
 			"select * from _pads WHERE mark=$1 LIMIT 18 OFFSET $2", marksQ, 18*(key-1))
 	}
 
-	er.ErrDefaultDetect(err, "QueryRow")
+	helpers.ErrDefaultDetect(err, "QueryRow")
 
 	iData := []models.PadsProduct{}
 
@@ -55,7 +55,7 @@ func Pads(w http.ResponseWriter, r *http.Request)  {
 		err = rows.Scan(&data.Id, &data.Mark, &data.Model, &data.Years, &data.Img, &data.Price)
 		data.MarkName = marks[data.Mark]
 		iData = append(iData, data)
-		er.ErrDefaultDetect(err, "Row Scan")
+		helpers.ErrDefaultDetect(err, "Row Scan")
 	}
 	defer rows.Close()
 
@@ -98,5 +98,5 @@ func Pads(w http.ResponseWriter, r *http.Request)  {
 
 	err = tmpl.ExecuteTemplate(w, "pads", output)
 
-	er.ErrCatch(err, "Перевод в шаблон")
+	helpers.ErrCatch(err, "Перевод в шаблон")
 }
