@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/jackc/pgx"
-	"github.com/prilogy/FullGas/helpers"
+	"FullGas/helpers"
 	"net/http"
 	"os"
 )

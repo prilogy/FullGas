@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gorilla/mux"
-	h "github.com/prilogy/FullGas/http"
+	h "FullGas/http"
 	"log"
 	"net/http"
 	"os"

@@ -1,7 +1,7 @@
 package models
 
 import (
-	s "github.com/prilogy/FullGas/models/static"
+	s "FullGas/models/static"
 )
 
 type TiresData struct{

@@ -3,8 +3,8 @@ package http
 import (
 	"context"
 	"github.com/jackc/pgx"
-	"github.com/prilogy/FullGas/helpers"
-	"github.com/prilogy/FullGas/models"
+	"FullGas/helpers"
+	"FullGas/models"
 	"html/template"
 	"net/http"
 	"os"
