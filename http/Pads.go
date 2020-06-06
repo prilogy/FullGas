@@ -1,10 +1,10 @@
 package http
 
 import (
-	"../helpers"
-	"../models"
 	"context"
 	"github.com/jackc/pgx"
+	"github.com/prilogy/FullGas/helpers"
+	"github.com/prilogy/FullGas/models"
 	"html/template"
 	"net/http"
 	"os"

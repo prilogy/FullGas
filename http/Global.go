@@ -1,8 +1,8 @@
 package http
 
 import (
-	"../helpers"
-	"../models"
+	"github.com/prilogy/FullGas/helpers"
+	"github.com/prilogy/FullGas/models"
 	"html/template"
 	"net/http"
 )

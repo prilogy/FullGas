@@ -1,8 +1,8 @@
 package main
 
 import (
-	h "./http"
 	"github.com/gorilla/mux"
+	h "github.com/prilogy/FullGas/http"
 	"log"
 	"net/http"
 	"os"
