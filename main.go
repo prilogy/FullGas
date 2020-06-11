@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/gorilla/mux"
 	h "FullGas/http"
+	"fmt"
+	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 	"os"
@@ -32,6 +33,7 @@ func main(){
 	r.PathPrefix("/static").Handler(http.StripPrefix("/static",
 		http.FileServer(http.Dir("templates/static"))))
 
+	fmt.Println("Hello! It's work!")
 	http.Handle("/", r)
 	http.ListenAndServe(":8080", nil)
 }
