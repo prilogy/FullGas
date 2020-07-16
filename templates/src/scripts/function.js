@@ -1,3 +1,5 @@
+const server = 'http://localhost:8000/';
+
 $(function(){
     $('a[href^="#"]').on('click', function(event) {
         // отменяем стандартное действие
@@ -63,7 +65,7 @@ async function selectType(value) {
 }
 
 async function selectRadius() {
-    let requestURL = 'http://localhost:8181/tires/cub/' + getCookie("cub") + '/type/' + getCookie("type");
+    let requestURL = server + 'tires/cub/' + getCookie("cub") + '/type/' + getCookie("type");
     let request = await fetch(requestURL, {
         method: "GET"
     });
@@ -165,14 +167,14 @@ async function selectPrice() {
     document.getElementById("ProductPrice").innerHTML = '';
 
     if(type === "1"){
-        requestURL = 'http://localhost:8181/tires/cub/' + getCookie("cub") + '/type/' +
+        requestURL = server + 'tires/cub/' + getCookie("cub") + '/type/' +
             getCookie("type") + '/rFront/' + getCookie("radius_front") + '/rBack/' + getCookie("radius_back");
     }else if(type === "2"){
-        requestURL = 'http://localhost:8181/tires/cub/' + getCookie("cub") + '/type/' +
+        requestURL = server + 'tires/cub/' + getCookie("cub") + '/type/' +
             getCookie("type") + '/rFront/' + getCookie("radius_front");
     }else{
         let spike = getCookie("spike") ? getCookie("spike") : 0;
-        requestURL = 'http://localhost:8181/tires/cub/' + getCookie("cub") + '/type/' +
+        requestURL = server + 'tires/cub/' + getCookie("cub") + '/type/' +
             getCookie("type") + '/rBack/' + getCookie("radius_back") + '/spike/' + spike;
         console.log(requestURL);
     }

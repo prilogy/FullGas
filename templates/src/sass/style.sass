@@ -59,6 +59,8 @@ header
   display: flex
   flex-direction: column
   margin: auto
+  .hamburger-menu
+    display: none
   a
     text-decoration: none
   .metaBar
@@ -96,8 +98,6 @@ header
           font-size: 1em
           font-family: $font-logo
           font-weight: 800
-      .hamburger-menu
-        display: none
       .menu
         font-size: .6em
         font-weight: 600
@@ -108,7 +108,7 @@ main
   max-width: $max-width
   margin: auto
   .banner
-    padding: 8em 0 4em
+    padding: 8em 1em 4em
     h1
       font-size: 2.6em
       font-weight: 800
@@ -128,6 +128,16 @@ main
         transition: width .5s
       path
         stroke: $accent-2
+  .catalog
+    .row
+      margin-bottom: 4em
+      div
+        padding: 2em 0em
+        text-align: center
+        font-weight: 600
+        a
+          text-decoration: none
+
 
 .ProductImage
   figure
@@ -368,93 +378,124 @@ main
       width: 90vw
 
 @media only screen and (max-width: 576px)
+  main
+    .banner
+      padding: 4em 1em 4em
+      h1
+        font-size: calc(1em + 1vw)
+        line-height: 1.2em
+        font-weight: 800
+        max-width: 1040px
   header
-    .mainBar
-      .wrapperBar
-        position: relative
-        .hamburger-menu
+    position: relative
+    .hamburger-menu
+      display: block
+      #menu__toggle
+        opacity: 0
+        display: none
+        &:checked
+          ~
+            .menu__btn
+              >span
+                transform: rotate(45deg)
+                &::before
+                  top: 0
+                  transform: rotate(0)
+
+                &::after
+                  top: 0
+                  transform: rotate(90deg)
+            .menu__box
+              visibility: visible
+              left: 0
+      .menu__btn
+        display: flex
+        align-items: center
+        position: fixed
+        top: 2em
+        right: .5em
+        width: 36px
+        height: 36px
+        cursor: pointer
+        z-index: 1
+        background-color: $dark-light-2
+        border-radius: 50%
+        >span
           display: block
-          #menu__toggle
-            opacity: 0
-            &:checked
-              ~
-                .menu__btn
-                  >span
-                    transform: rotate(45deg)
-                    &::before
-                      top: 0
-                      transform: rotate(0)
-
-                    &::after
-                      top: 0
-                      transform: rotate(90deg)
-                .menu__box
-                  visibility: visible
-                  left: 0
-          .menu__btn
-            display: flex
-            align-items: center
-            position: fixed
-            top: 2.6em
-            right: .5em
-            width: 26px
-            height: 26px
-            cursor: pointer
-            z-index: 1
-            >span
-              display: block
-              position: absolute
-              width: 100%
-              height: 2px
-              background-color: #616161
-              transition-duration: .25s
-              &::before
-                display: block
-                position: absolute
-                width: 100%
-                height: 2px
-                background-color: #616161
-                transition-duration: .25s
-                content: ''
-                top: -8px
-
-              &::after
-                display: block
-                position: absolute
-                width: 100%
-                height: 2px
-                background-color: #616161
-                transition-duration: .25s
-                content: ''
-                top: 8px
-          .menu__box
+          position: absolute
+          width: 60%
+          height: 2px
+          margin-left: 20%
+          background-color: $dark-light-4
+          transition-duration: .25s
+          &::before
             display: block
-            position: fixed
-            visibility: hidden
-            top: 0
-            left: -100%
-            width: 300px
-            height: 100%
-            margin: 0
-            padding: 80px 0
-            list-style: none
-            background-color: #ECEFF1
-            box-shadow: 1px 0px 6px rgba(0, 0, 0, .2)
+            position: absolute
+            width: 100%
+            height: 2px
+            background-color: $dark-light-4
             transition-duration: .25s
+            content: ''
+            top: -6px
 
-          .menu__item
+          &::after
             display: block
-            padding: 12px 24px
-            color: #333
-            font-family: 'Roboto', sans-serif
-            font-size: 20px
-            font-weight: 600
-            text-decoration: none
+            position: absolute
+            width: 100%
+            height: 2px
+            background-color: $dark-light-4
             transition-duration: .25s
-            &:hover
-              background-color: #CFD8DC
-        .menu
-          display: none
+            content: ''
+            top: 6px
+      .menu__box
+        display: block
+        position: fixed
+        visibility: hidden
+        top: 0
+        left: -100%
+        width: 300px
+        height: 100%
+        margin: 0
+        padding: 16px 0
+        list-style: none
+        background-color: #ECEFF1
+        box-shadow: 1px 0px 6px rgba(0, 0, 0, .2)
+        transition-duration: .25s
+        div
+          display: flex
+          flex-direction: row
+          justify-content: flex-start
+          align-items: center
+          margin-bottom: .8em
+          figure
+            width: 4em
+            height: 4em
+            background-image: url("/static/svg/logo.svg")
+            background-size: cover
+            margin-left: .4em
+          div
+            font-size: 1.4em
+            font-family: $font-logo
+            font-weight: 800
+            padding-left: .4em
+            margin-bottom: 0
+
+
+
+      .menu__item
+        display: block
+        padding: 12px 24px
+        color: #333
+        font-family: 'Roboto', sans-serif
+        font-size: 20px
+        font-weight: 600
+        text-decoration: none
+        transition-duration: .25s
+        &:hover
+          background-color: #CFD8DC
+    .mainBar
+      display: none
+
   html
     font-size: 24px
     #PadsBanner, #ChainsBanner, #TiresBanner, #MainBanner
@@ -469,9 +510,25 @@ main
     h3
       font-size: 16px
     .wrapper
+      .ProductSingleFilter
+        padding: .62em 0 0
+        .Filter
+          padding-left: 4px
+          a
+            margin-left: 0
       .ProductFilter
-        width: 96vw
+        width: 94vw
         margin: 0 auto
+        padding-top: 0
+        h1
+          padding-left: 0
+          font-size: 1.4em
+          line-height: 1.2em
+        &Block
+          .blocks
+            .row
+              margin: auto
+
   .ProductSingle
     height: 20em
     margin: 0 !important

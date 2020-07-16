@@ -1,20 +1,23 @@
 package main
 
 import (
+	help "FullGas/helpers"
 	h "FullGas/http"
 	"fmt"
 	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
 	"log"
 	"net/http"
 	"os"
 )
 
 func main(){
-	err := os.Setenv("DATABASE_URL", "postgres://postgres:12345@localhost/fgmotoru")
-	if err != nil {
-		log.Fatal("ListenAndServe Ошибка установки ENV : ", err)
-	}
 	r := mux.NewRouter()
+
+	if err := godotenv.Load(); err != nil {
+		log.Print("No .env file found")
+	}
+	server := os.Getenv("SERVER")
 
 	r.HandleFunc("/", h.Index)
 	r.HandleFunc("/tires", h.Tires)
@@ -27,13 +30,17 @@ func main(){
 
 
 	r.PathPrefix("/src/css").Handler(http.StripPrefix("/src/css",
-		http.FileServer(http.Dir("templates/src/css"))))
+		http.FileServer(http.Dir(server + "templates/src/css"))))
 	r.PathPrefix("/src/scripts").Handler(http.StripPrefix("/src/scripts",
-		http.FileServer(http.Dir("templates/src/scripts"))))
+		http.FileServer(http.Dir(server + "templates/src/scripts"))))
 	r.PathPrefix("/static").Handler(http.StripPrefix("/static",
-		http.FileServer(http.Dir("templates/static"))))
+		http.FileServer(http.Dir(server + "templates/static"))))
+	r.PathPrefix("/templates").Handler(http.StripPrefix("/templates",
+		http.FileServer(http.Dir(server + "templates"))))
 
 	fmt.Println("Hello! It's work!")
 	http.Handle("/", r)
-	http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":8000", nil)
+
+	help.ErrDefaultDetect(err, "Запуск сервера")
 }

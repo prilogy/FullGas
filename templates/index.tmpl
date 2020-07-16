@@ -3,12 +3,22 @@
         <main class="pageContent">
             <section class="banner">
                 <h1>Магазин запчастей самого лучшего мото-сервиса в городе Пенза</h1>
-                <a class="link-with-arrow" href="/">
+                <a class="link-with-arrow" href="#catalog">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 16">
                         <path class="shaft" stroke-width="2" d="M 0 8 H 72"></path>
                         <path class="end" fill="none" stroke-width="2" d="M 63 15 l 8-7-8-7"></path>
                     </svg>Посмотреть каталог
                 </a>
+            </section>
+            <section class="catalog" id="catalog" style="margin-left: 8px; margin-right: 8px;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 shadow"><a href="/tires">Шины</a></div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 shadow"><a href="/pads">Колодки</a></div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 shadow"><a href="/chains">Цепи</a></div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 shadow"><a href="/stars">Звёзды</a></div>
+                    </div>
+                </div>
             </section>
         </main>
     {{template "footer" }}

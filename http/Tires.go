@@ -11,6 +11,7 @@ import (
 )
 
 func Tires(w http.ResponseWriter, r *http.Request)  {
+	server := os.Getenv("SERVER")
 	data := models.Tires()
 
 	//Догрузка из БД
@@ -34,9 +35,9 @@ func Tires(w http.ResponseWriter, r *http.Request)  {
 	data.TiresInside.Cub = append(data.TiresInside.Cub, help.Unique(iData)...)
 
 	templates, err := template.ParseFiles(
-		"templates/header.tmpl",
-		"templates/tires.tmpl",
-		"templates/footer.tmpl")
+		server + "templates/header.tmpl",
+		server + "templates/tires.tmpl",
+		server + "templates/footer.tmpl")
 
 	tmpl := templates.Lookup("tires.tmpl")
 	err = tmpl.ExecuteTemplate(w, "tires", data)

@@ -121,6 +121,9 @@ header {
           flex-direction: column;
   margin: auto;
 }
+header .hamburger-menu {
+  display: none;
+}
 header a {
   text-decoration: none;
 }
@@ -195,9 +198,6 @@ header .mainBar .wrapperBar figure h1 {
   font-family: "Orbitron", sans-serif;
   font-weight: 800;
 }
-header .mainBar .wrapperBar .hamburger-menu {
-  display: none;
-}
 header .mainBar .wrapperBar .menu {
   font-size: 0.6em;
   font-weight: 600;
@@ -211,7 +211,7 @@ main {
   margin: auto;
 }
 main .banner {
-  padding: 8em 0 4em;
+  padding: 8em 1em 4em;
 }
 main .banner h1 {
   font-size: 2.6em;
@@ -236,6 +236,17 @@ main .banner a.link-with-arrow svg {
 }
 main .banner a.link-with-arrow path {
   stroke: #1480B6;
+}
+main .catalog .row {
+  margin-bottom: 4em;
+}
+main .catalog .row div {
+  padding: 2em 0em;
+  text-align: center;
+  font-weight: 600;
+}
+main .catalog .row div a {
+  text-decoration: none;
 }
 
 .ProductImage figure {
@@ -586,34 +597,45 @@ main .banner a.link-with-arrow path {
   }
 }
 @media only screen and (max-width: 576px) {
-  header .mainBar .wrapperBar {
+  main .banner {
+    padding: 4em 1em 4em;
+  }
+  main .banner h1 {
+    font-size: calc(1em + 1vw);
+    line-height: 1.2em;
+    font-weight: 800;
+    max-width: 1040px;
+  }
+
+  header {
     position: relative;
   }
-  header .mainBar .wrapperBar .hamburger-menu {
+  header .hamburger-menu {
     display: block;
   }
-  header .mainBar .wrapperBar .hamburger-menu #menu__toggle {
+  header .hamburger-menu #menu__toggle {
     opacity: 0;
+    display: none;
   }
-  header .mainBar .wrapperBar .hamburger-menu #menu__toggle:checked ~ .menu__btn > span {
+  header .hamburger-menu #menu__toggle:checked ~ .menu__btn > span {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
   }
-  header .mainBar .wrapperBar .hamburger-menu #menu__toggle:checked ~ .menu__btn > span::before {
+  header .hamburger-menu #menu__toggle:checked ~ .menu__btn > span::before {
     top: 0;
     -webkit-transform: rotate(0);
             transform: rotate(0);
   }
-  header .mainBar .wrapperBar .hamburger-menu #menu__toggle:checked ~ .menu__btn > span::after {
+  header .hamburger-menu #menu__toggle:checked ~ .menu__btn > span::after {
     top: 0;
     -webkit-transform: rotate(90deg);
             transform: rotate(90deg);
   }
-  header .mainBar .wrapperBar .hamburger-menu #menu__toggle:checked ~ .menu__box {
+  header .hamburger-menu #menu__toggle:checked ~ .menu__box {
     visibility: visible;
     left: 0;
   }
-  header .mainBar .wrapperBar .hamburger-menu .menu__btn {
+  header .hamburger-menu .menu__btn {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -621,45 +643,48 @@ main .banner a.link-with-arrow path {
         -ms-flex-align: center;
             align-items: center;
     position: fixed;
-    top: 2.6em;
+    top: 2em;
     right: 0.5em;
-    width: 26px;
-    height: 26px;
+    width: 36px;
+    height: 36px;
     cursor: pointer;
     z-index: 1;
+    background-color: #4C6876;
+    border-radius: 50%;
   }
-  header .mainBar .wrapperBar .hamburger-menu .menu__btn > span {
+  header .hamburger-menu .menu__btn > span {
     display: block;
     position: absolute;
-    width: 100%;
+    width: 60%;
     height: 2px;
-    background-color: #616161;
+    margin-left: 20%;
+    background-color: #B8C2C7;
     -webkit-transition-duration: 0.25s;
             transition-duration: 0.25s;
   }
-  header .mainBar .wrapperBar .hamburger-menu .menu__btn > span::before {
+  header .hamburger-menu .menu__btn > span::before {
     display: block;
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: #616161;
-    -webkit-transition-duration: 0.25s;
-            transition-duration: 0.25s;
-    content: "";
-    top: -8px;
-  }
-  header .mainBar .wrapperBar .hamburger-menu .menu__btn > span::after {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #616161;
+    background-color: #B8C2C7;
     -webkit-transition-duration: 0.25s;
             transition-duration: 0.25s;
     content: "";
-    top: 8px;
+    top: -6px;
   }
-  header .mainBar .wrapperBar .hamburger-menu .menu__box {
+  header .hamburger-menu .menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #B8C2C7;
+    -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+    content: "";
+    top: 6px;
+  }
+  header .hamburger-menu .menu__box {
     display: block;
     position: fixed;
     visibility: hidden;
@@ -668,7 +693,7 @@ main .banner a.link-with-arrow path {
     width: 300px;
     height: 100%;
     margin: 0;
-    padding: 80px 0;
+    padding: 16px 0;
     list-style: none;
     background-color: #ECEFF1;
     -webkit-box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
@@ -676,7 +701,37 @@ main .banner a.link-with-arrow path {
     -webkit-transition-duration: 0.25s;
             transition-duration: 0.25s;
   }
-  header .mainBar .wrapperBar .hamburger-menu .menu__item {
+  header .hamburger-menu .menu__box div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 0.8em;
+  }
+  header .hamburger-menu .menu__box div figure {
+    width: 4em;
+    height: 4em;
+    background-image: url("/static/svg/logo.svg");
+    background-size: cover;
+    margin-left: 0.4em;
+  }
+  header .hamburger-menu .menu__box div div {
+    font-size: 1.4em;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 800;
+    padding-left: 0.4em;
+    margin-bottom: 0;
+  }
+  header .hamburger-menu .menu__item {
     display: block;
     padding: 12px 24px;
     color: #333;
@@ -687,10 +742,10 @@ main .banner a.link-with-arrow path {
     -webkit-transition-duration: 0.25s;
             transition-duration: 0.25s;
   }
-  header .mainBar .wrapperBar .hamburger-menu .menu__item:hover {
+  header .hamburger-menu .menu__item:hover {
     background-color: #CFD8DC;
   }
-  header .mainBar .wrapperBar .menu {
+  header .mainBar {
     display: none;
   }
 
@@ -713,9 +768,27 @@ main .banner a.link-with-arrow path {
   html h3 {
     font-size: 16px;
   }
+  html .wrapper .ProductSingleFilter {
+    padding: 0.62em 0 0;
+  }
+  html .wrapper .ProductSingleFilter .Filter {
+    padding-left: 4px;
+  }
+  html .wrapper .ProductSingleFilter .Filter a {
+    margin-left: 0;
+  }
   html .wrapper .ProductFilter {
-    width: 96vw;
+    width: 94vw;
     margin: 0 auto;
+    padding-top: 0;
+  }
+  html .wrapper .ProductFilter h1 {
+    padding-left: 0;
+    font-size: 1.4em;
+    line-height: 1.2em;
+  }
+  html .wrapper .ProductFilterBlock .blocks .row {
+    margin: auto;
   }
 
   .ProductSingle {

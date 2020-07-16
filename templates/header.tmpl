@@ -6,7 +6,7 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>BitterBit</title>
+        <title>Магазин FullGas</title>
         {{range $key, $value := .Links }}
             <link rel="{{$value.Rel}}" href="{{$value.Href}}">
         {{end}}
@@ -25,24 +25,25 @@
                 <figure>
                     <h1>Full Gas moto</h1>
                 </figure>
-                <div class="hamburger-menu">
-                    <input id="menu__toggle" type="checkbox" />
-                    <label class="menu__btn" for="menu__toggle">
-                        <span></span>
-                    </label>
-
-                    <ul class="menu__box">
-                        {{range $key, $value := .NavBar }}
-                            <li><a class="menu__item" href="{{ $value.Link }}">{{ $value.Name }}</a></li>
-                        {{end}}
-                    </ul>
-                </div>
                 <div class="menu">
                     {{range $key, $value := .NavBar }}
                         <a href="{{ $value.Link }}">{{ $value.Name }}</a>
                     {{end}}
                 </div>
             </div>
+        </div>
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+                <span></span>
+            </label>
+
+            <ul class="menu__box">
+                <div><figure></figure> <div>FullGas</div></div>
+                {{range $key, $value := .NavBar }}
+                    <li><a class="menu__item" href="{{ $value.Link }}">{{ $value.Name }}</a></li>
+                {{end}}
+            </ul>
         </div>
     </header>
 {{end}}

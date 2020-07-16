@@ -12,6 +12,7 @@ import (
 )
 
 func Pads(w http.ResponseWriter, r *http.Request)  {
+	server := os.Getenv("SERVER")
 	output := models.Pads()
 	data := models.PadsProduct{}
 
@@ -78,7 +79,7 @@ func Pads(w http.ResponseWriter, r *http.Request)  {
 		End: temp,
 		AllData: pages,
 		Current: key,
-		Link: "http://localhost:8181/pads/",
+		Link: "http://localhost:8000/pads/",
 	}
 
 	var fm = template.FuncMap{
@@ -92,9 +93,9 @@ func Pads(w http.ResponseWriter, r *http.Request)  {
 	}
 
 	tmpl := template.Must(template.New("pads").Funcs(fm).
-		ParseFiles("templates/header.tmpl",
-		"templates/pads.tmpl",
-		"templates/footer.tmpl"))
+		ParseFiles(server + "templates/header.tmpl",
+		server + "templates/pads.tmpl",
+		server + "templates/footer.tmpl"))
 
 	err = tmpl.ExecuteTemplate(w, "pads", output)
 

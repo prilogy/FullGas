@@ -14,6 +14,7 @@ import (
 )
 
 func Chains(w http.ResponseWriter, r *http.Request)  {
+	server := os.Getenv("SERVER")
 	output := models.Chains()
 	data := models.ChainsProduct{}
 
@@ -86,7 +87,7 @@ func Chains(w http.ResponseWriter, r *http.Request)  {
 		End: temp,
 		AllData: pages,
 		Current: key,
-		Link: "http://localhost:8181/chains/",
+		Link: "http://localhost:8000/chains/",
 	}
 
 	var fm = template.FuncMap{
@@ -100,9 +101,9 @@ func Chains(w http.ResponseWriter, r *http.Request)  {
 	}
 
 	tmpl := template.Must(template.New("chains").Funcs(fm).
-		ParseFiles("templates/header.tmpl",
-			"templates/chains.tmpl",
-			"templates/footer.tmpl"))
+		ParseFiles(server + "templates/header.tmpl",
+			server + "templates/chains.tmpl",
+			server + "templates/footer.tmpl"))
 
 	err = tmpl.ExecuteTemplate(w, "chains", output)
 
