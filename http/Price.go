@@ -18,13 +18,16 @@ func TiresPrice(w http.ResponseWriter, r *http.Request) {
 	defer conn.Close(context.Background())
 
 	vars := mux.Vars(r)
-	data := 0
+	var data struct{
+		Id 		int
+		Price 	int
+	}
 
 	row := conn.QueryRow(context.Background(),
-		"select price from _tires WHERE cub=$1 AND kit_unit=$2 AND radius_front=$3 AND radius_back=$4",
+		"select id, price from _tires WHERE cub=$1 AND kit_unit=$2 AND radius_front=$3 AND radius_back=$4",
 		vars["cub"], vars["type"], vars["rFront"], vars["rBack"])
 
-	err = row.Scan(&data)
+	err = row.Scan(&data.Id, &data.Price)
 	helpers.ErrDefaultDetect(err, "QueryRow")
 
 	Jdata, _ := json.Marshal(data)
@@ -37,13 +40,16 @@ func TiresFPrice(w http.ResponseWriter, r *http.Request) {
 	defer conn.Close(context.Background())
 
 	vars := mux.Vars(r)
-	data := 0
+	var data struct{
+		Id 		int
+		Price 	int
+	}
 
 	row := conn.QueryRow(context.Background(),
-		"select price from _tires WHERE cub=$1 AND kit_unit=$2 AND radius_front=$3",
+		"select id, price from _tires WHERE cub=$1 AND kit_unit=$2 AND radius_front=$3",
 		vars["cub"], vars["type"], vars["rFront"])
 
-	err = row.Scan(&data)
+	err = row.Scan(&data.Id, &data.Price)
 	helpers.ErrDefaultDetect(err, "QueryRow")
 
 	w.WriteHeader(http.StatusOK)
@@ -58,7 +64,10 @@ func TiresBPrice(w http.ResponseWriter, r *http.Request) {
 	defer conn.Close(context.Background())
 
 	vars := mux.Vars(r)
-	data := 0
+	var data struct{
+		Id 		int
+		Price 	int
+	}
 
 	spike, err := strconv.Atoi(vars["spike"])
 	cub, err := strconv.Atoi(vars["cub"])
@@ -67,10 +76,10 @@ func TiresBPrice(w http.ResponseWriter, r *http.Request) {
 	helpers.ErrDefaultDetect(err, "Первод в строку")
 
 	row := conn.QueryRow(context.Background(),
-		"select price from _tires WHERE cub=$1 AND kit_unit=$2 AND radius_back=$3 AND spike=$4",
+		"select id, price from _tires WHERE cub=$1 AND kit_unit=$2 AND radius_back=$3 AND spike=$4",
 		cub, _type, rBack, spike)
 
-	err = row.Scan(&data)
+	err = row.Scan(&data.Id, &data.Price)
 	helpers.ErrDefaultDetect(err, "QueryRow")
 
 	w.WriteHeader(http.StatusOK)

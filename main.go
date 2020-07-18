@@ -18,6 +18,8 @@ func main(){
 		log.Print("No .env file found")
 	}
 	server := os.Getenv("SERVER")
+	os.Setenv("SERVER", "")
+
 
 	r.HandleFunc("/", h.Index)
 	r.HandleFunc("/tires", h.Tires)
@@ -27,7 +29,9 @@ func main(){
 	r.HandleFunc("/tires/cub/{cub}/type/{type}/rFront/{rFront}/rBack/{rBack}", h.TiresPrice)
 	r.HandleFunc("/tires/cub/{cub}/type/{type}/rFront/{rFront}", h.TiresFPrice)
 	r.HandleFunc("/tires/cub/{cub}/type/{type}/rBack/{rBack}/spike/{spike}", h.TiresBPrice)
-
+	r.HandleFunc("/product/{product}/id/{id}", h.CreateOrder)
+	//r.HandleFunc("/product/tires/cub/{cub}/rFront/{rFront}/rBack/{rBack}/type/{type}/spike/{spike}/price/{price}", h.CreateOrderTires)
+	r.HandleFunc("/orderId/{orderId}", h.SendEmail)
 
 	r.PathPrefix("/src/css").Handler(http.StripPrefix("/src/css",
 		http.FileServer(http.Dir(server + "templates/src/css"))))

@@ -109,6 +109,97 @@ html #ChainsBanner {
   padding: 1em 8px;
 }
 
+.popup {
+  position: fixed;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 20em;
+  width: 20em;
+  background-color: #2D4E5F;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 0.4em;
+}
+.popup form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 15em;
+}
+.popup form label {
+  color: #EEF5FB;
+  font-size: 0.8em;
+  margin: 10px 0;
+  width: 100%;
+}
+.popup form input {
+  padding: 0.8em 1em;
+  margin: 8px 0;
+  background-color: #EEF5FB;
+  border: 1px solid #E3E8ED;
+  border-radius: 0.4em;
+  font-size: 1em;
+  width: 100%;
+}
+.popup form input:focus {
+  outline: none;
+  border: 2px solid #B8C2C7;
+}
+.popup form p {
+  color: #EEF5FB;
+  padding-top: 0.6em;
+  line-height: 1.2em;
+}
+.popup form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  margin-top: 8px;
+}
+.popup form div input[type=submit] {
+  width: 44%;
+  font-size: 0.8em;
+  font-weight: 600;
+  padding: 0.4em 0.6em;
+}
+.popup form div input[type=button] {
+  width: 44%;
+  font-size: 0.8em;
+  font-weight: 400;
+  background-color: #2D4E5F;
+  border: 2px solid #E3E8ED;
+  color: #EEF5FB;
+  padding: 0.4em 0.6em;
+}
+
 header {
   position: relative;
   z-index: 9999;
@@ -241,11 +332,12 @@ main .catalog .row {
   margin-bottom: 4em;
 }
 main .catalog .row div {
-  padding: 2em 0em;
   text-align: center;
   font-weight: 600;
 }
 main .catalog .row div a {
+  display: inline-block;
+  padding: 2em 6vw;
   text-decoration: none;
 }
 
@@ -597,6 +689,14 @@ main .catalog .row div a {
   }
 }
 @media only screen and (max-width: 576px) {
+  .popup {
+    height: 100vh;
+    width: 100vw;
+  }
+  .popup form {
+    width: 91%;
+  }
+
   main .banner {
     padding: 4em 1em 4em;
   }

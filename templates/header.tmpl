@@ -12,6 +12,21 @@
         {{end}}
     </head>
     <body>
+    <div class="popup shadow" id="popup" style="display: none">
+        <form id="popupForm" target="_blank" action="" method="POST">
+            <label>
+                <input type="text" name="firstName" required placeholder="Ваше имя"/>
+            </label>
+            <label>
+                <input type="text" name="phone" required placeholder="Ваш номер телефона"/>
+            </label>
+            <div>
+                <input onclick="hidePopup()" type="button" value="Отмена" />
+                <input type="submit" value="Заказать" />
+            </div>
+            <p>Наш менеджер свяжется с вами в течение часа!) Благодарим за покупку.</p>
+        </form>
+    </div>
     <header>
         <div class="metaBar">
             <div class="navBar">

@@ -35,7 +35,7 @@
                             <p>{{$value.Description}}</p>
                             <div class="ActionBlock">
                                 <div class="Price"> {{ $value.Price }} руб.<span> / шт.</span></div>
-                                <button id="Pad_{{ $value.Id }}" class="Button" onclick="">Купить</button>
+                                <button id="Pad_{{ $value.Id }}" class="Button" onclick="sendEmail({{ $value.Id }}, 'chains')">Купить</button>
                             </div>
                         </div>
                     </div>

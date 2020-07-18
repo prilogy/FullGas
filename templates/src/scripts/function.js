@@ -1,4 +1,4 @@
-const server = 'http://localhost:8000/';
+const server = '/';
 
 $(function(){
     $('a[href^="#"]').on('click', function(event) {
@@ -176,7 +176,6 @@ async function selectPrice() {
         let spike = getCookie("spike") ? getCookie("spike") : 0;
         requestURL = server + 'tires/cub/' + getCookie("cub") + '/type/' +
             getCookie("type") + '/rBack/' + getCookie("radius_back") + '/spike/' + spike;
-        console.log(requestURL);
     }
 
     let request = await fetch(requestURL, {
@@ -186,7 +185,37 @@ async function selectPrice() {
 
     let div = document.createElement('div');
     div.className = "price";
-    div.innerHTML = "<h4>Цена: " + TiresPrice +
-        "</h4> <button>Купить</button>";
+    div.innerHTML = "<h4>Цена: " + TiresPrice['Price'] + "</h4> <button onclick=\"sendEmail(" + TiresPrice['Id'] + ", 'tires')\">Купить</button>";
     document.getElementById("ProductPrice").appendChild(div);
+}
+
+// async function sendEmailTires(TiresPrice) {
+//     let rFront = getCookie("radius_front") ? getCookie("radius_front") : 0;
+//     let rBack = getCookie("radius_back") ? getCookie("radius_back") : 0;
+//     let spike = getCookie("spike") ? getCookie("spike") : 0;
+//
+//     let requestURL = server + 'product/tires/cub/' + getCookie("cub") + '/rFront/' + rFront + '/rBack/' + rBack +
+//         '/type/' + getCookie("type")  + '/spike/' + spike + '/price/' + TiresPrice;
+//
+//     await fetch(requestURL, {
+//         method: "POST"
+//     });
+// }
+
+
+async function sendEmail(ProductId, ProductName){
+    let requestURL = server + 'product/' + ProductName + '/id/' + ProductId;
+
+    let request = await fetch(requestURL, {
+        method: "GET"
+    });
+    let orderId = await request.json();
+
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("popupForm").action = "/orderId/" + orderId;
+    //onclick="window.location.href = '/';"
+}
+
+function hidePopup() {
+    document.getElementById("popup").style.display = "none";
 }
