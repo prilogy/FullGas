@@ -880,7 +880,8 @@ main .catalog .row div a {
   }
   header .hamburger-menu .menu__box div div {
     font-size: 1.4em;
-    font-family: "Orbitron", sans-serif;
+    font-family: "Inter", sans-serif;
+    font-style: italic;
     font-weight: 800;
     padding-left: 0.4em;
     margin-bottom: 0;
@@ -889,7 +890,7 @@ main .catalog .row div a {
     display: block;
     padding: 12px 24px;
     color: #333;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 20px;
     font-weight: 600;
     text-decoration: none;

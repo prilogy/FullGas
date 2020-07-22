@@ -82,19 +82,20 @@ func SendEmail(w http.ResponseWriter, r *http.Request)  {
 		var data struct{
 			Id 			int
 			Mark		int
-			Model		int
-			Years		int
+			Model		string
+			Years		string
+			Img			int
 			Price		int
 		}
 
 		row := conn.QueryRow(context.Background(),
 			"select * from _pads WHERE id=$1", order.ProductId)
 
-		err = row.Scan(&data.Id, &data.Mark, &data.Model, &data.Years, &data.Price)
+		err = row.Scan(&data.Id, &data.Mark, &data.Model, &data.Years, &data.Img, &data.Price)
 		fmt.Println(data)
 		message = "Новый заказ и это колодки! \nИмя клиента: " + name + "\nНомер телефона: " + phone +
-			"\nId товара: " + strconv.Itoa(data.Id) + "\nМодель: " + strconv.Itoa(data.Model) + "\nГоды модели: " +
-			strconv.Itoa(data.Years) + "\nЦена: " + strconv.Itoa(data.Price)
+			"\nId товара: " + strconv.Itoa(data.Id) + "\nМодель: " + data.Model + "\nГоды модели: " +
+			data.Years + "\nЦена: " + strconv.Itoa(data.Price)
 	}else if order.Product == "chains" {
 		var data struct{
 			Id 			int
