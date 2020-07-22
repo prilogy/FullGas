@@ -1,0 +1,18 @@
+{{define "sendEmail"}}
+    {{template "header" .Header}}
+    <div class="wrapper" style="padding: 0; max-width: 1440px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-12 offset-2">
+                    <div class="orderDone">
+                        <h1>Ваш заказ №{{ .OrderData.Id }} обрабатывается.</h1>
+                        <h2>В течение часа наш менеджер свяжется с Вами и уточнит все детали заказа.</h2>
+                        <a href="/">Понятно</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{template "footer" }}
+{{end}}

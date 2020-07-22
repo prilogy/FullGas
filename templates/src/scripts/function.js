@@ -82,38 +82,55 @@ async function selectRadius() {
         }
         let unique = [ ...new Set([arrRad])];
         let i = 0;
+        let j = 0;
         let spikes;
         for (key in TiresRadius){
             let div = document.createElement('div');
             div.className = "block";
+            let back = document.createElement('div');
+            back.className = "block";
+            let column = document.createElement('div');
+            column.className = "col-lg-3 col-md-3 col-sm-4 col-6";
 
             if(type === "1"){
-                //ids: RadiusFront, RadiusBack
-                //class: blocks
+                column.className = "col-lg-6 col-md-6 col-sm-6 col-12";
+                console.log("key:" + key);
+                //if(TiresRadius[key]["RadiusBack"] && TiresRadius[key]["RadiusBack"] !== '' && TiresRadius[key]["RadiusBack"] !== ' '){
+
+                //}
+
                 if(unique[i]) {
+                    let col = document.createElement('div');
+                    col.className = "col-lg-6 col-md-6 col-sm-6 col-12";
+
                     spikes = TiresRadius[key]["Spike"] === 0 ? "Передняя" : TiresRadius[key]["Spike"] + " шипов";
                     div.id = "RadiusFront_" + unique[i];
                     div.innerHTML = "<h4>" + unique[i] + " R</h4> <p>" + spikes + "</p>";
-                    document.getElementById("RadiusBlocksFront").appendChild(div);
+                    document.getElementById("RadiusBlocksFront").appendChild(col);
+                    document.getElementById("RadiusBlocksFront").children[i].appendChild(div);
                     i++;
                     div.onclick = function(){
                         clickCount++;
-                        if (clickCount === 2){ selectPrice(); }
                         document.querySelectorAll('#RadiusBlocksFront .block').forEach(n => n.classList.remove('active'));
                         div.classList.add('active');
                         let divId = div.id;
                         let arr = divId.split('_');
                         setCookie('radius_front', arr[1], 'Tue, 19 Jan 2038 03:14:07 GMT', '/');
+
+                        if (clickCount === 2){ selectPrice(); }
                     };
+                }else{
+                    document.getElementById("RadiusBlocksFront").appendChild(column);
                 }
 
                 spikes = TiresRadius[key]["Spike"] === 0 ? "Задняя" : TiresRadius[key]["Spike"] + " шипов";
-                let back = document.createElement('div');
-                back.className = "block";
-                back.innerHTML = "<h4>" + TiresRadius[key]["RadiusBack"] + " R</h4> <p>" + spikes + "</p>";
-                document.getElementById("RadiusBlocksBack").appendChild(back);
-
                 back.id = "RadiusBack_" + TiresRadius[key]["RadiusBack"];
+                back.innerHTML = "<h4>" + TiresRadius[key]["RadiusBack"] + " R</h4> <p>" + spikes + "</p>";
+                //document.getElementById("RadiusBlocksBack").appendChild(back);
+                document.getElementById("RadiusBlocksBack").appendChild(column);
+                document.getElementById("RadiusBlocksBack").children[j].appendChild(back);
+                console.log("j:" + j)
+                j++;
                 back.onclick = function(){
                     clickCount++;
                     document.querySelectorAll('#RadiusBlocksBack .block').forEach(n => n.classList.remove('active'));
@@ -123,13 +140,13 @@ async function selectRadius() {
                     setCookie('radius_back', arr[1], 'Tue, 19 Jan 2038 03:14:07 GMT', '/');
 
                     if (clickCount === 2){ selectPrice(); }
-                };
-
+                }
             }else if(type === "2"){
                 spikes = TiresRadius[key]["Spike"] === 0 ? "Передняя" : TiresRadius[key]["Spike"] + " шипов";
                 div.id = "RadiusFront_" + TiresRadius[key]["RadiusFront"];
                 div.innerHTML = "<h4>" + TiresRadius[key]["RadiusFront"] + " R</h4> <p>" + spikes + "</p>";
-                document.getElementById("RadiusBlocksFront").appendChild(div);
+                document.getElementById("RadiusBlocksFront").appendChild(column)
+                document.getElementById("RadiusBlocksFront").children[j].appendChild(div);
                 div.onclick = function(){
                     document.querySelectorAll('#RadiusBlocksBack .block').forEach(n => n.classList.remove('active'));
                     div.classList.add('active');
@@ -138,6 +155,7 @@ async function selectRadius() {
                     setCookie('radius_front', arr[1], 'Tue, 19 Jan 2038 03:14:07 GMT', '/');
                     selectPrice();
                 };
+                j++;
             }else {
                 spikes = TiresRadius[key]["Spike"] === 0 ? "Задняя" : TiresRadius[key]["Spike"] + " шипов";
                 if(TiresRadius[key]["Spike"] === 0){
@@ -146,7 +164,8 @@ async function selectRadius() {
                     div.id = "RadiusBack_" + TiresRadius[key]["RadiusBack"] + "_Spike_" + TiresRadius[key]["Spike"];
                 }
                 div.innerHTML = "<h4>" + TiresRadius[key]["RadiusBack"] + " R</h4> <p>" + spikes + "</p>";
-                document.getElementById("RadiusBlocksBack").appendChild(div);
+                document.getElementById("RadiusBlocksBack").appendChild(column)
+                document.getElementById("RadiusBlocksBack").children[j].appendChild(div);
 
                 div.onclick = function(){
                     document.querySelectorAll('#RadiusBlocksBack .block').forEach(n => n.classList.remove('active'));
@@ -157,6 +176,7 @@ async function selectRadius() {
                     setCookie('spike', arr[3], 'Tue, 19 Jan 2038 03:14:07 GMT', '/');
                     selectPrice();
                 };
+                j++;
             }
         }//endFor
 }
@@ -188,20 +208,6 @@ async function selectPrice() {
     div.innerHTML = "<h4>Цена: " + TiresPrice['Price'] + "</h4> <button onclick=\"sendEmail(" + TiresPrice['Id'] + ", 'tires')\">Купить</button>";
     document.getElementById("ProductPrice").appendChild(div);
 }
-
-// async function sendEmailTires(TiresPrice) {
-//     let rFront = getCookie("radius_front") ? getCookie("radius_front") : 0;
-//     let rBack = getCookie("radius_back") ? getCookie("radius_back") : 0;
-//     let spike = getCookie("spike") ? getCookie("spike") : 0;
-//
-//     let requestURL = server + 'product/tires/cub/' + getCookie("cub") + '/rFront/' + rFront + '/rBack/' + rBack +
-//         '/type/' + getCookie("type")  + '/spike/' + spike + '/price/' + TiresPrice;
-//
-//     await fetch(requestURL, {
-//         method: "POST"
-//     });
-// }
-
 
 async function sendEmail(ProductId, ProductName){
     let requestURL = server + 'product/' + ProductName + '/id/' + ProductId;

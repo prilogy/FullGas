@@ -25,6 +25,7 @@ func main(){
 	r.HandleFunc("/tires", h.Tires)
 	r.HandleFunc("/pads", h.Pads)
 	r.HandleFunc("/chains", h.Chains)
+	r.HandleFunc("/stars", h.Stars)
 	r.HandleFunc("/tires/cub/{cub}/type/{type}", h.Radius)
 	r.HandleFunc("/tires/cub/{cub}/type/{type}/rFront/{rFront}/rBack/{rBack}", h.TiresPrice)
 	r.HandleFunc("/tires/cub/{cub}/type/{type}/rFront/{rFront}", h.TiresFPrice)
@@ -42,7 +43,7 @@ func main(){
 	r.PathPrefix("/templates").Handler(http.StripPrefix("/templates",
 		http.FileServer(http.Dir(server + "templates"))))
 
-	fmt.Println("Hello! It's work!")
+	fmt.Println("Hello! It's work!")  
 	http.Handle("/", r)
 	err := http.ListenAndServe(":8000", nil)
 

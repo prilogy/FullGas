@@ -24,7 +24,7 @@ func Header() HeaderData {
 			{
 				Name: "Главные стили",
 				Rel: "stylesheet",
-				Href: "src/css/style.css",
+				Href: "/src/css/style.css",
 			},
 			{
 				Name: "Шрифт логотипа",
@@ -34,7 +34,7 @@ func Header() HeaderData {
 			{
 				Name: "Бутстрап",
 				Rel: "stylesheet",
-				Href: "src/css/bootstrap-grid.min.css",
+				Href: "/src/css/bootstrap-grid.min.css",
 			},
 		},
 		NavBar: []Menu{
@@ -60,7 +60,7 @@ func Header() HeaderData {
 			},
 			{
 				Name: "Звёзды",
-				Link: "/",
+				Link: "/stars",
 				Rate: 5,
 			},
 		},

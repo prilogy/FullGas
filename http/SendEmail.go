@@ -2,18 +2,17 @@ package http
 
 import (
 	help "FullGas/helpers"
+	"FullGas/models"
 	"context"
 	"encoding/json"
-	"strconv"
-
-	//"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/jackc/pgx"
-	"github.com/prilogy/FullGas/helpers"
+	"html/template"
 	"net/http"
 	"net/smtp"
 	"os"
+	"strconv"
 )
 
 func CreateOrder(w http.ResponseWriter, r *http.Request)  {
@@ -28,13 +27,17 @@ func CreateOrder(w http.ResponseWriter, r *http.Request)  {
 		"INSERT INTO orders (product, product_id) VALUES ($1, $2) RETURNING (id)", vars["product"], vars["id"])
 
 	err = row.Scan(&data)
-	helpers.ErrDefaultDetect(err, "QueryExec")
+	help.ErrDefaultDetect(err, "QueryExec")
 
 	Jdata, _ := json.Marshal(data)
 	fmt.Fprintf(w, "%s", Jdata)
 }
 
 func SendEmail(w http.ResponseWriter, r *http.Request)  {
+	server := os.Getenv("SERVER")
+	output := models.SendEmail()
+	order := models.SendOrder{}
+
 	if err := r.ParseForm(); err != nil {
 		fmt.Println("ParseForm() err: ", err)
 	}
@@ -46,15 +49,13 @@ func SendEmail(w http.ResponseWriter, r *http.Request)  {
 	defer conn.Close(context.Background())
 
 	vars := mux.Vars(r)
-	var order struct{
-		Product		string
-		ProductId	int
-	}
+
 
 	row := conn.QueryRow(context.Background(),
 		"select product, product_id from orders WHERE id=$1", vars["orderId"])
 
 	err = row.Scan(&order.Product, &order.ProductId)
+	order.Id = vars["orderId"]
 
 	var message string
 	if order.Product == "tires" {
@@ -114,7 +115,7 @@ func SendEmail(w http.ResponseWriter, r *http.Request)  {
 			strconv.Itoa(data.Usable) + "\nЦена: " + strconv.Itoa(data.Price)
 	}
 
-	helpers.ErrDefaultDetect(err, "QueryRow")
+	help.ErrDefaultDetect(err, "QueryRow")
 
 	// user we are authorizing as
 	from := "aolychkin@gmail.com"
@@ -137,4 +138,12 @@ func SendEmail(w http.ResponseWriter, r *http.Request)  {
 		fmt.Println("Error SendMail: ", err)
 	}
 	fmt.Println("Email Sent! \n" + message)
+
+	tmpl := template.Must(template.New("sendEmail").
+		ParseFiles(server + "templates/header.tmpl",
+			server + "templates/sendEmail.tmpl",
+			server + "templates/footer.tmpl"))
+
+	output.OrderData = order
+	err = tmpl.ExecuteTemplate(w, "sendEmail", output)
 }

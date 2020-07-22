@@ -25,7 +25,7 @@ html
     opacity: 0.87
   .shadow
     box-shadow: inset -5px -2px 10px rgba($dark-main, 0.08), inset 2px 5px 10px rgba($light-main, 0.4), -2px -2px 6px rgba($light-main, 0.44), 2px 2px 6px rgba($dark-main, 0.26)
-  #StarsBanner, #TiresBanner, #PadsBanner, #ChainsBanner, #MainBanner
+  #StarsBanner, #TiresBanner, #PadsBanner, #ChainsBanner, #MainBanner, #StarsBanner
     width: 100vw
     height: 34vw
     background-position: center
@@ -34,13 +34,16 @@ html
   #MainBanner
     background-color: $bgc
   #PadsBanner
-    background-image: url("/static/img/PadsDesktop.jpg")
+    background-image: url("/static/img/banners/PadsDesktop.jpg")
     background-position: bottom
   #TiresBanner
-    background-image: url("/static/img/TiresDesktop.jpg")
+    background-image: url("/static/img/banners/TiresDesktop.jpg")
     background-position: bottom
   #ChainsBanner
-    background-image: url("/static/img/ChainsDesktop.jpg")
+    background-image: url("/static/img/banners/ChainsDesktop.jpg")
+    background-position: bottom
+  #StarsBanner
+    background-image: url("/static/img/banners/StarsDesktop.jpg")
     background-position: bottom
 
 .wrapper
@@ -52,6 +55,26 @@ html
   min-height: 120vh
   margin: auto
   padding: 1em 8px
+  margin: 17px auto
+  .orderDone
+    margin-top: 50%
+    transform: translate(0, -50%)
+    h2
+      margin-top: 1em
+    a
+      margin-top: 1.4em
+      display: inline-block
+      text-decoration: none
+      text-align: center
+      background-color: $dark-main
+      border: none
+      max-width: 320px
+      width: 94vw
+      padding: 17px 0
+      font-size: 26px
+      color: #fff
+      border-radius: 8px
+      box-shadow: inset -5px -2px 10px rgba($dark-main, 0.08), inset 2px 5px 10px rgba($light-main, 0.4), -2px -2px 4px rgba($light-main, 0.44), 2px 2px 4px rgba($dark-main, 0.26)
 
 .popup
   position: fixed
@@ -155,10 +178,22 @@ header
       margin: auto
       figure
         padding: 0 9px
-        h1
-          font-size: 1em
-          font-family: $font-logo
-          font-weight: 800
+        a
+          display: flex
+          flex-direction: row
+          justify-content: center
+          align-items: center
+          figure
+            width: 1.6em
+            height: 1.6em
+            background-image: url("/static/svg/logo.svg")
+            background-size: cover
+          h1
+            margin-left: .4em
+            font-size: 1em
+            font-family: $font-main
+            font-style: italic
+            font-weight: 800
       .menu
         font-size: .6em
         font-weight: 600
@@ -236,10 +271,11 @@ main
           font-size: 40px
           font-weight: 600
         button
-          margin-top: 17px
+          margin: 17px auto
           background-color: $dark-main
           border: none
-          width: 320px
+          max-width: 320px
+          width: 94vw
           padding: 17px 0
           font-size: 26px
           color: #fff
@@ -249,6 +285,7 @@ main
       display: flex
       flex-direction: row
       flex-wrap: wrap
+      width: 100%
       .row
         width: 100%
       .block
@@ -379,7 +416,7 @@ main
 @media only screen and (max-width: 1200px)
   html
     font-size: 26px
-    #StarsBanner, #TiresBanner, #PadsBanner, #ChainsBanner, #MainBanner
+    #StarsBanner, #TiresBanner, #PadsBanner, #ChainsBanner, #MainBanner, #StarsBanner
       height: 40vw
   .ProductSingle
     height: 18em
@@ -565,15 +602,17 @@ main
 
   html
     font-size: 24px
-    #PadsBanner, #ChainsBanner, #TiresBanner, #MainBanner
+    #PadsBanner, #ChainsBanner, #TiresBanner, #MainBanner, #StarsBanner
       width: 100%
       height: 133vw
     #ChainsBanner
-      background-image: url("/static/img/ChainsMobile.jpg")
+      background-image: url("/static/img/banners/ChainsMobile.jpg")
     #PadsBanner
-      background-image: url("/static/img/PadsMobile.jpg")
+      background-image: url("/static/img/banners/PadsMobile.jpg")
     #TiresBanner
-      background-image: url("/static/img/TiresMobile.jpg")
+      background-image: url("/static/img/banners/TiresMobile.jpg")
+    #StarsBanner
+      background-image: url("/static/img/banners/StarsMobile.jpg")
     h3
       font-size: 16px
     .wrapper

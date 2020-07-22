@@ -69,7 +69,7 @@ html .shadow {
   -webkit-box-shadow: inset -5px -2px 10px rgba(15, 50, 67, 0.08), inset 2px 5px 10px rgba(238, 245, 251, 0.4), -2px -2px 6px rgba(238, 245, 251, 0.44), 2px 2px 6px rgba(15, 50, 67, 0.26);
           box-shadow: inset -5px -2px 10px rgba(15, 50, 67, 0.08), inset 2px 5px 10px rgba(238, 245, 251, 0.4), -2px -2px 6px rgba(238, 245, 251, 0.44), 2px 2px 6px rgba(15, 50, 67, 0.26);
 }
-html #StarsBanner, html #TiresBanner, html #PadsBanner, html #ChainsBanner, html #MainBanner {
+html #StarsBanner, html #TiresBanner, html #PadsBanner, html #ChainsBanner, html #MainBanner, html #StarsBanner {
   width: 100vw;
   height: 34vw;
   background-position: center;
@@ -80,15 +80,19 @@ html #MainBanner {
   background-color: #F7FDFD;
 }
 html #PadsBanner {
-  background-image: url("/static/img/PadsDesktop.jpg");
+  background-image: url("/static/img/banners/PadsDesktop.jpg");
   background-position: bottom;
 }
 html #TiresBanner {
-  background-image: url("/static/img/TiresDesktop.jpg");
+  background-image: url("/static/img/banners/TiresDesktop.jpg");
   background-position: bottom;
 }
 html #ChainsBanner {
-  background-image: url("/static/img/ChainsDesktop.jpg");
+  background-image: url("/static/img/banners/ChainsDesktop.jpg");
+  background-position: bottom;
+}
+html #StarsBanner {
+  background-image: url("/static/img/banners/StarsDesktop.jpg");
   background-position: bottom;
 }
 
@@ -107,6 +111,31 @@ html #ChainsBanner {
   min-height: 120vh;
   margin: auto;
   padding: 1em 8px;
+  margin: 17px auto;
+}
+.wrapper .orderDone {
+  margin-top: 50%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+.wrapper .orderDone h2 {
+  margin-top: 1em;
+}
+.wrapper .orderDone a {
+  margin-top: 1.4em;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  background-color: #0F3243;
+  border: none;
+  max-width: 320px;
+  width: 94vw;
+  padding: 17px 0;
+  font-size: 26px;
+  color: #fff;
+  border-radius: 8px;
+  -webkit-box-shadow: inset -5px -2px 10px rgba(15, 50, 67, 0.08), inset 2px 5px 10px rgba(238, 245, 251, 0.4), -2px -2px 4px rgba(238, 245, 251, 0.44), 2px 2px 4px rgba(15, 50, 67, 0.26);
+          box-shadow: inset -5px -2px 10px rgba(15, 50, 67, 0.08), inset 2px 5px 10px rgba(238, 245, 251, 0.4), -2px -2px 4px rgba(238, 245, 251, 0.44), 2px 2px 4px rgba(15, 50, 67, 0.26);
 }
 
 .popup {
@@ -284,9 +313,32 @@ header .mainBar .wrapperBar {
 header .mainBar .wrapperBar figure {
   padding: 0 9px;
 }
-header .mainBar .wrapperBar figure h1 {
+header .mainBar .wrapperBar figure a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+header .mainBar .wrapperBar figure a figure {
+  width: 1.6em;
+  height: 1.6em;
+  background-image: url("/static/svg/logo.svg");
+  background-size: cover;
+}
+header .mainBar .wrapperBar figure a h1 {
+  margin-left: 0.4em;
   font-size: 1em;
-  font-family: "Orbitron", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-style: italic;
   font-weight: 800;
 }
 header .mainBar .wrapperBar .menu {
@@ -395,10 +447,11 @@ main .catalog .row div a {
   font-weight: 600;
 }
 .ProductFilter .ProductFilterBlock#ProductPrice .price button {
-  margin-top: 17px;
+  margin: 17px auto;
   background-color: #0F3243;
   border: none;
-  width: 320px;
+  max-width: 320px;
+  width: 94vw;
   padding: 17px 0;
   font-size: 26px;
   color: #fff;
@@ -416,6 +469,7 @@ main .catalog .row div a {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  width: 100%;
 }
 .ProductFilter .ProductFilterBlock .blocks .row {
   width: 100%;
@@ -620,7 +674,7 @@ main .catalog .row div a {
   html {
     font-size: 26px;
   }
-  html #StarsBanner, html #TiresBanner, html #PadsBanner, html #ChainsBanner, html #MainBanner {
+  html #StarsBanner, html #TiresBanner, html #PadsBanner, html #ChainsBanner, html #MainBanner, html #StarsBanner {
     height: 40vw;
   }
 
@@ -852,18 +906,21 @@ main .catalog .row div a {
   html {
     font-size: 24px;
   }
-  html #PadsBanner, html #ChainsBanner, html #TiresBanner, html #MainBanner {
+  html #PadsBanner, html #ChainsBanner, html #TiresBanner, html #MainBanner, html #StarsBanner {
     width: 100%;
     height: 133vw;
   }
   html #ChainsBanner {
-    background-image: url("/static/img/ChainsMobile.jpg");
+    background-image: url("/static/img/banners/ChainsMobile.jpg");
   }
   html #PadsBanner {
-    background-image: url("/static/img/PadsMobile.jpg");
+    background-image: url("/static/img/banners/PadsMobile.jpg");
   }
   html #TiresBanner {
-    background-image: url("/static/img/TiresMobile.jpg");
+    background-image: url("/static/img/banners/TiresMobile.jpg");
+  }
+  html #StarsBanner {
+    background-image: url("/static/img/banners/StarsMobile.jpg");
   }
   html h3 {
     font-size: 16px;

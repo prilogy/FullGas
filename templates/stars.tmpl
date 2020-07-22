@@ -1,11 +1,11 @@
-{{define "pads"}}
+{{define "stars"}}
     {{template "header" .Header}}
     {{$pads := .Pads}}
     {{$marks := .MarkList}}
     {{$pages := .Page.End}}
     {{$pageMark := .PageMark}}
     {{$pageCurrent := .Page.Current}}
-    <section id="PadsBanner" class="shadow"></section>
+    <section id="StarsBanner" class="shadow"></section>
     <div class="wrapper" style="padding: 0; max-width: 1440px">
         <div class="container-fluid">
             <div class="ProductSingleFilter">
@@ -13,7 +13,7 @@
                 <h2>Выберите марку:</h2>
                 <div class="Filter">
                     {{range $key, $value := $marks}}
-                        <a href='?mark={{ $value.Id }}#marks' class="FilterBlock" onclick="ListUpdate({{ $value.Id }})">
+                        <a href='?mark={{ $value.Name }}#marks' class="FilterBlock" onclick="ListUpdate({{ $value.Id }})">
                             <h3>{{ $value.Name }}</h3>
                         </a>
                     {{end}}
@@ -28,11 +28,11 @@
                                     style="
                                             background-position: center;
                                             background-size: cover;
-                                            background-image: url('/static/img/{{ $value.Img }}.jpg');
+                                            background-image: url('/static/img/stars/{{ $value.Img }}.jpg');
                                             ">
                             </figure>
-                            <h2>{{ $value.MarkName }} {{ $value.Model }}</h2>
-                            <p>Данная колодка подходит на мотоциклы марки {{ $value.MarkName }}, модели {{ $value.Model }} {{ $value.Years }} годов</p>
+                            <h2>{{ $value.Mark }} {{ $value.Model }}</h2>
+                            <p><b style="font-weight: 600">{{if eq $value.Side 1}} Звезда задняя. {{ else }} Звезда передняя. {{ end }}</b>Подходит на мотоциклы марки {{ $value.Mark }}, модели {{ $value.Model }} {{ $value.Years }} годов</p>
                             <div class="ActionBlock">
                                 <div class="Price"> {{ $value.Price }} руб.<span> / шт.</span></div>
                                 <button id="Pad_{{ $value.Id }}" class="Button" onclick="sendEmail({{ $value.Id }}, 'pads')">Купить</button>
