@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="ProductSingleFilter">
                 <a href="#" id="marks"></a>
-                <h2>Выберите марку:</h2>
+                <h2>Выберите применяемость:</h2>
                 <div class="Filter">
                     {{range $key, $value := $marks}}
                         <a href='?mark={{ $value.Id }}#marks' class="FilterBlock" onclick="ListUpdate({{ $value.Id }})">

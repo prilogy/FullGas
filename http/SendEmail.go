@@ -57,6 +57,8 @@ func SendEmail(w http.ResponseWriter, r *http.Request)  {
 	err = row.Scan(&order.Product, &order.ProductId)
 	order.Id = vars["orderId"]
 
+	fmt.Println(order.Product)
+
 	var message string
 	if order.Product == "tires" {
 		var data struct{
@@ -73,11 +75,20 @@ func SendEmail(w http.ResponseWriter, r *http.Request)  {
 			"select * from _tires WHERE id=$1", order.ProductId)
 
 		err = row.Scan(&data.Id, &data.Cub, &data.RadiusFront, &data.RadiusBack, &data.KitUnit, &data.Spike, &data.Price)
-		fmt.Println(data)
+
+		var kitUnit string
+		if data.KitUnit == 1{
+			kitUnit = "Комплект"
+		}else if data.KitUnit == 2{
+			kitUnit = "Передняя резина"
+		}else {
+			kitUnit = "Задняя резина"
+		}
+
 		message = "Новый заказ и это резина! \nИмя клиента: " + name + "\nНомер телефона: " + phone +
-			"\nId товара: " + strconv.Itoa(data.Id) + "\nКубатура: " + strconv.Itoa(data.Cub) + "\nРадиус передний: " +
-			strconv.Itoa(data.RadiusFront) + "\nРадиус задний: " + strconv.Itoa(data.RadiusBack) + "\nТип комплекта: " +
-			strconv.Itoa(data.KitUnit) + "\nШипы: " + strconv.Itoa(data.Spike) + "\nЦена: " + strconv.Itoa(data.Price)
+			"\nId товара: " + strconv.Itoa(data.Id) + "\nКубатура: " + strconv.Itoa(data.Cub) + "\nТип комплекта: " +
+			kitUnit + "\nРадиус передний: " +  strconv.Itoa(data.RadiusFront) + "\nРадиус задний: " +
+			strconv.Itoa(data.RadiusBack) + "\nШипы: " + strconv.Itoa(data.Spike) + "\nЦена: " + strconv.Itoa(data.Price)
 	}else if order.Product == "pads" {
 		var data struct{
 			Id 			int
@@ -94,8 +105,8 @@ func SendEmail(w http.ResponseWriter, r *http.Request)  {
 		err = row.Scan(&data.Id, &data.Mark, &data.Model, &data.Years, &data.Img, &data.Price)
 		fmt.Println(data)
 		message = "Новый заказ и это колодки! \nИмя клиента: " + name + "\nНомер телефона: " + phone +
-			"\nId товара: " + strconv.Itoa(data.Id) + "\nМодель: " + data.Model + "\nГоды модели: " +
-			data.Years + "\nЦена: " + strconv.Itoa(data.Price)
+			"\nId товара: " + strconv.Itoa(data.Id) + "\nМарка: " + models.Pads().MarkList[data.Mark].Name +
+			"\nМодель: " + data.Model + "\nГоды модели: " + data.Years + "\nЦена: " + strconv.Itoa(data.Price)
 	}else if order.Product == "chains" {
 		var data struct{
 			Id 			int
@@ -111,9 +122,48 @@ func SendEmail(w http.ResponseWriter, r *http.Request)  {
 
 		err = row.Scan(&data.Id, &data.Label, &data.Model, &data.Usable, &data.Price, &data.Desc)
 		fmt.Println(data)
+
+		var usable string
+		if data.Usable == 1{
+			usable = "Motocross"
+		}else if data.Usable == 2{
+			usable = "Road/Offroad"
+		}else {
+			usable = "Street"
+		}
+
 		message = "Новый заказ и это цепи! \nИмя клиента: " + name + "\nНомер телефона: " + phone +
-			"\nId товара: " + strconv.Itoa(data.Id) + "\nМодель: " + data.Model + "\nНомер применяемости: " +
-			strconv.Itoa(data.Usable) + "\nЦена: " + strconv.Itoa(data.Price)
+			"\nId товара: " + strconv.Itoa(data.Id) + "\nТип применяемости: " + usable + "\nМодель: " + data.Model +
+			"\nЦена: " + strconv.Itoa(data.Price)
+	}else if order.Product == "stars" {
+		var data struct{
+			Id 			int
+			Brand		string
+			Mark		string
+			Model		string
+			Years		string
+			Price		int
+			Side		int
+			Img			int
+		}
+
+		row := conn.QueryRow(context.Background(),
+			"select * from _stars WHERE id=$1", order.ProductId)
+
+		err = row.Scan(&data.Id, &data.Brand, &data.Mark, &data.Model, &data.Years, &data.Price, &data.Side, &data.Img)
+		fmt.Println(data)
+
+		var side string
+		if data.Side == 0{
+			side = "Передняя"
+		}else{
+			side ="Задняя"
+		}
+
+		message = "Новый заказ и это звезды! \nИмя клиента: " + name + "\nНомер телефона: " + phone +
+			"\nId товара: " + strconv.Itoa(data.Id) + "\nБренд: " + data.Brand + "\nМарка мотоцикла: " +
+			data.Mark + "\nМодель: " + data.Model + "\nГоды: " + data.Years + "\nСторона: " + side +
+			"\nЦена: " + strconv.Itoa(data.Price)
 	}
 
 	help.ErrDefaultDetect(err, "QueryRow")

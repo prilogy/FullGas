@@ -35,7 +35,7 @@
                             <p><b style="font-weight: 600">{{if eq $value.Side 1}} Звезда задняя. {{ else }} Звезда передняя. {{ end }}</b>Подходит на мотоциклы марки {{ $value.Mark }}, модели {{ $value.Model }} {{ $value.Years }} годов</p>
                             <div class="ActionBlock">
                                 <div class="Price"> {{ $value.Price }} руб.<span> / шт.</span></div>
-                                <button id="Pad_{{ $value.Id }}" class="Button" onclick="sendEmail({{ $value.Id }}, 'pads')">Купить</button>
+                                <button id="Pad_{{ $value.Id }}" class="Button" onclick="sendEmail({{ $value.Id }}, 'stars')">Купить</button>
                             </div>
                         </div>
                     </div>
