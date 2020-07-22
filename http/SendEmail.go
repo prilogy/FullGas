@@ -119,17 +119,17 @@ func SendEmail(w http.ResponseWriter, r *http.Request)  {
 	help.ErrDefaultDetect(err, "QueryRow")
 
 	// user we are authorizing as
-	from := "aolychkin@gmail.com"
+	from := "fullgasmoto1@gmail.com"
 
 	// use we are sending email to
-	to := "aolychkin@gmail.com"
+	to := "fullgasmoto1@gmail.com"
 
 	// server we are authorized to send email through
 	host := "smtp.gmail.com"
 
 	// Create the authentication for the SendMail()
 	// using PlainText, but other authentication methods are encouraged
-	auth := smtp.PlainAuth("", from, "Xz4lbm777%", host)
+	auth := smtp.PlainAuth("", from, "700yamacross700", host)
 
 	// NOTE: Using the backtick here ` works like a heredoc, which is why all the
 	// rest of the lines are forced to the beginning of the line, otherwise the
@@ -137,8 +137,9 @@ func SendEmail(w http.ResponseWriter, r *http.Request)  {
 
 	if err := smtp.SendMail(host+":587", auth, from, []string{to}, []byte(message)); err != nil {
 		fmt.Println("Error SendMail: ", err)
+	}else {
+		fmt.Println("Email Sent! \n" + message)
 	}
-	fmt.Println("Email Sent! \n" + message)
 
 	tmpl := template.Must(template.New("sendEmail").
 		ParseFiles(server + "templates/header.tmpl",

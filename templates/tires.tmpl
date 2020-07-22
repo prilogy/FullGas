@@ -1,5 +1,6 @@
 {{define "tires"}}
     {{template "header" .Header}}
+    {{$radius := .TiresInside.RadiusInside}}
     <section id="TiresBanner" class="shadow"></section>
     <div class="wrapper">
         <div class="ProductImage">
@@ -19,7 +20,15 @@
                             <div class="col-lg-3 col-md-3 col-sm-4 col-6">
                                 <div class="block" id="Cub_{{ $value }}" onclick="selectCub({{ $value }});">
                                     <h4>{{ $value }} СС</h4>
-                                    <p>R24</p>
+                                    <p>
+                                        {{range $k, $v := $radius}}
+                                            {{if eq $k $value}}
+                                                {{range $kk, $vv := $v}}
+                                                    R{{$vv}}
+                                                {{end}}
+                                            {{end}}
+                                        {{end}}
+                                    </p>
                                 </div>
                             </div>
                         {{end}}

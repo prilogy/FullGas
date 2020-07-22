@@ -11,10 +11,11 @@ type TiresData struct{
 }
 
 type TiresInside struct {
-	Cub			[]int
-	Type		[]TiresType
-	Radius		[]int
-	Spike		[]int
+	Cub				[]int
+	RadiusInside	map[int][]int
+	Type			[]TiresType
+	Radius			[]int
+	Spike			[]int
 }
 
 type TiresType struct{
